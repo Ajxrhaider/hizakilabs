@@ -1,0 +1,24 @@
+body.tank {
+	background-image: url("images/bg.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: top center;
+	font-family: Verdana, Arial;
+	color: black;
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: Verdana,Arial;
+	color: black;
+	box-sizing: inherit;
+	font-size: 15px;
+    line-height: 1.5;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	padding: 0 auto;
+
+}
