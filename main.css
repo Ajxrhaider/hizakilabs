@@ -1,6 +1,8 @@
-body.tank {
+body {
+    background-repeat: no-repeat;
+}
+.tank {
 	background-image: url("images/bg.png");
-	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: top center;
 	font-family: Verdana, Arial;
