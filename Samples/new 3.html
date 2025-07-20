@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizaki Labs - Comprehensive Tech Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6e41e2;
+            --secondary: #41a6e2;
+            --accent: #e2416e;
+            --dark: #121218;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(110, 65, 226, 0.5);
+        }
+        
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .section-divider {
+            height: 100px;
+            width: 100%;
+            background: linear-gradient(to bottom right, transparent 49.5%, var(--dark) 50%), 
+                        linear-gradient(to top right, transparent 49.5%, var(--dark) 50%);
+            background-size: 100% 50%;
+            background-repeat: no-repeat;
+            background-position: top left, bottom left;
+        }
+        
+        .tech-chip {
+            background: rgba(110, 65, 226, 0.2);
+            border: 1px solid var(--primary);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-laptop-code text-2xl mr-2 gradient-text"></i>
+                        <span class="text-xl font-bold gradient-text">HIZAKI LABS</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium hover:text-purple-400 transition">Home</a>
+                        <a href="#services" class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-400 transition">Services</a>
+                        <a href="#portfolio" class="px-3 py-2 rounded-md text-sm font-medium hover:text-pink-400 transition">Portfolio</a>
+                        <a href="#content" class="px-3 py-2 rounded-md text-sm font-medium hover:text-purple-400 transition">Content</a>
+                        <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium hover:text-blue-400 transition">About</a>
+                        <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium hover:text-pink-400 transition">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom right, #121218 0%, #1e1e2a 100%);">
+        <div class="max-w-7xl mx-auto">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        <span class="block">Tech Solutions by</span>
+                        <span class="gradient-text">Hizaki Labs</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 mb-8 max-w-lg">
+                        Comprehensive technology services from hardware repair to creative digital solutions. 
+                        Bridging the gap between technical expertise and creative expression.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="tech-chip px-3 py-1 rounded-full text-sm">Laptop Repair</span>
+                        <span class="tech-chip px-3 py-1 rounded-full text-sm">Web Design</span>
+                        <span class="tech-chip px-3 py-1 rounded-full text-sm">Content Creation</span>
+                        <span class="tech-chip px-3 py-1 rounded-full text-sm">Game Development</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-md font-medium transition transform hover:scale-105">
+                            Get Started
+                        </a>
+                        <a href="#services" class="border border-gray-600 hover:border-purple-400 text-white px-6 py-3 rounded-md font-medium transition transform hover:scale-105">
+                            Our Services
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="hexagon w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center glow-effect">
+                            <img src="https://placehold.co/400x400" alt="Hizaki Labs logo featuring futuristic circuit board design with glowing purple and blue accents" class="hexagon w-60 h-60 md:w-72 md:h-72 object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-pink-600 rounded-lg opacity-80 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">Our Comprehensive</span> Services
+                </h2>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                    From hardware repairs to digital creativity, we offer end-to-end technology solutions tailored to your needs.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tech Repair Services -->
+                <div class="service-card bg-gray-800 rounded-xl p-6 transition duration-300 transform hover:scale-105">
+                    <div class="w-14 h-14 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-tools text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Technical Repairs</h3>
+                    <ul class="text-gray-300 space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-400 mt-1 mr-2"></i>
+                            <span>Laptop/PC Hardware Repairs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-400 mt-1 mr-2"></i>
+                            <span>OS Installation & Configuration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-400 mt-1 mr-2"></i>
+                            <span>Networking Setup & Troubleshooting</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Digital Services -->
+                <div class="service-card bg-gray-800 rounded-xl p-6 transition duration-300 transform hover:scale-105">
+                    <div class="w-14 h-14 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Digital Services</h3>
+                    <ul class="text-gray-300 space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-2"></i>
+                            <span>Custom Web Design & Development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-2"></i>
+                            <span>Video Editing & Production</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-400 mt-1 mr-2"></i>
+                            <span>Computer Graphics & Digital Art</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Content Creation -->
+                <div class="service-card bg-gray-800 rounded-xl p-6 transition duration-300 transform hover:scale-105">
+                    <div class="w-14 h-14 bg-pink-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-film text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Content Creation</h3>
+                    <ul class="text-gray-300 space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-pink-400 mt-1 mr-2"></i>
+                            <span>YouTube Channel Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-pink-400 mt-1 mr-2"></i>
+                            <span>Podcast Production</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-pink-400 mt-1 mr-2"></i>
+                            <span>Music Composition & Production</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Future Services -->
+                <div class="service-card bg-gray-800 rounded-xl p-6 transition duration-300 transform hover:scale-105 md:col-span-2 lg:col-span-1">
+                    <div class="w-14 h-14 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Future Ventures</h3>
+                    <ul class="text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle-notch text-purple-400 mt-1 mr-2"></i>
+                            <span>Game Development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle-notch text-blue-400 mt-1 mr-2"></i>
+                            <span>AI Development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle-notch text-pink-400 mt-1 mr-2"></i>
+                            <span>Custom PC Building</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Showcase -->
+    <section id="portfolio" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">Our Work</span> Portfolio
+                </h2>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                    A showcase of our diverse projects across technology and creative fields.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="group relative overflow-hidden rounded-xl">
+                    <img src="https://placehold.co/600x400" alt="Workspace showing laptop repair process with tools and components neatly arranged" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold mb-2">Tech Repair Projects</h3>
+                        <p class="text-gray-300 text-sm">Successful laptop repairs and hardware upgrades</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="group relative overflow-hidden rounded-xl">
+                    <img src="https://placehold.co/600x400" alt="Computer screen displaying web design projects with modern UI elements" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold mb-2">Web Design Projects</h3>
+                        <p class="text-gray-300 text-sm">Custom websites and digital solutions</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="group relative overflow-hidden rounded-xl">
+                    <img src="https://placehold.co/600x400" alt="Video editing workstation with multiple screens showing editing timeline" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold mb-2">Video Production</h3>
+                        <p class="text-gray-300 text-sm">High-quality video editing projects</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="group relative overflow-hidden rounded-xl">
+                    <img src="https://placehold.co/600x400" alt="Digital artwork featuring futuristic cyberpunk cityscape" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold mb-2">Computer Graphics</h3>
+                        <p class="text-gray-300 text-sm">Digital art and graphic design works</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="group relative overflow-hidden rounded-xl">
+                    <img src="https://placehold.co/600x400" alt="Music production studio with MIDI keyboard and audio equipment" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold mb-2">Music Production</h3>
+                        <p class="text-gray-300 text-sm">Original compositions and audio production</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="group relative overflow-hidden rounded-xl">
+                    <img src="https://placehold.co/600x400" alt="Game development scene showing 3D character models and environment" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold mb-2">Game Development</h3>
+                        <p class="text-gray-300 text-sm">Early prototypes and concepts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Channels -->
+    <section id="content" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="gradient-text">Our Content</span> Channels
+                </h2>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                    Explore our diverse content across multiple platforms and formats.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- YouTube - Gaming -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400" alt="Gaming setup with multiple monitors showing gameplay footage" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">
+                            <i class="fab fa-youtube mr-1"></i> YouTube
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Gaming Channel</h3>
+                        <p class="text-gray-300 mb-4">Gameplay, reviews, and gaming community content</p>
+                        <a href="#" class="text-purple-400 hover:text-purple-300 font-medium flex items-center">
+                            View Channel <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- YouTube - Coding -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400" alt="Developer workstation showing code editor with colorful syntax highlighting" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">
+                            <i class="fab fa-youtube mr-1"></i> YouTube
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Coding Channel</h3>
+                        <p class="text-gray-300 mb-4">Tutorials, project walkthroughs, and tech discussions</p>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 font-medium flex items-center">
+                            View Channel <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- YouTube - Anime/Memes -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x400" alt="Anime artwork collage featuring popular characters and scenes" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">
+                            <i class="fab fa-youtube mr-1"></i> YouTube
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Anime & Memes</h3>
+                        <p class="text-gray-300 mb-4">Reactions, discussions, and meme culture content</p>
+                        <a href="#" class="text-pink-400 hover:text-pink-300 font-medium flex items-center">
+                            View Channel <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podcast Section -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden md:flex">
+                <div class="md:w-1/3">
+                    <img src="https://placehold.co/600x600" alt="Podcast recording studio setup with microphone and headphones" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 md:w-2/3">
+                    <div class="mb-4">
+                        <span class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                            <i class="fab fa-spotify mr-1"></i> Spotify
+                        </span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Hizaki Labs Podcast</h3>
+                    <p class="text-gray-300 mb-6">
+                        Dive into discussions about technology, creativity, and digital culture. 
+                        Each episode explores different aspects of our work and passions.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-headphones text-purple-400 mr-3"></i>
+                            <div>
+                                <div class="font-medium">Tech Talk</div>
+                                <div class="text-sm text-gray-400">Latest tech trends</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-microphone text-blue-400 mr-3"></i>
+                            <div>
+                                <div class="font-medium">Creative Process</div>
+                                <div class="text-sm text-gray-400">Art and music</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-gamepad text-pink-400 mr-3"></i>
+                            <div>
+                                <div class="font-medium">Game Dev</div>
+                                <div class="text-sm text-gray-400">Development insights</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-lightbulb text-purple-400 mr-3"></i>
+                            <div>
+                                <div class="font-medium">AI Futures</div>
+                                <div class="text-sm text-gray-400">Emerging technologies</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium flex items-center">
+                            <i class="fab fa-spotify mr-2"></i> Listen Now
+                        </a>
+                        <a href="#" class="border border-gray-600 hover:border-green-400 text-white px-4 py-2 rounded-md font-medium flex items-center">
+                            <i class="fas fa-rss mr-2"></i> RSS Feed
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="md:flex items-center gap-12">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        <span class="gradient-text">About</span> Hizaki Labs
+                    </h2>
+                    <p class="text-gray-300 mb-6">
+                        Founded by a passionate technologist and creative, Hizaki Labs bridges the gap between 
+                        technical expertise and artistic expression. What began as laptop repair services has 
+                        evolved into a comprehensive digital studio encompassing technology services, content 
+                        creation, and future-forward development.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        Our philosophy centers on solving real problems with both technical rigor and creative 
+                        thinking. Whether fixing hardware, producing videos, coding websites, or composing music, 
+                        we approach each task with the same dedication to craftsmanship.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">100+</div>
+                            <div class="text-gray-400 text-sm">Devices Repaired</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">50+</div>
+                            <div class="text-gray-400 text-sm">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">10K+</div>
+                            <div class="text-gray-400 text-sm">Content Views</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-1 rounded-xl">
+                        <img src="https://placehold.co/600x600" alt="Modern tech workspace showing multiple monitors, laptops, and creative tools arranged on a cluttered but productive desk" class="rounded-lg w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <div class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-2xl font-bold text-center mb-8">Technologies We Work With</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fab fa-windows text-blue-400 mr-2"></i>
+                    <span>Windows OS</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fab fa-linux text-orange-400 mr-2"></i>
+                    <span>Linux</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fab fa-html5 text-orange-500 mr-2"></i>
+                    <span>HTML/CSS/JS</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fab fa-react text-blue-400 mr-2"></i>
+                    <span>React</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fas fa-video text-purple-400 mr-2"></i>
+                    <span>Premiere Pro</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fas fa-music text-pink-400 mr-2"></i>
+                    <span>FL Studio</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fas fa-gamepad text-green-400 mr-2"></i>
+                    <span>Unity</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fas fa-brain text-blue-300 mr-2"></i>
+                    <span>TensorFlow</span>
+                </div>
+                <div class="tech-chip px-4 py-2 rounded-full flex items-center">
+                    <i class="fas fa-network-wired text-yellow-400 mr-2"></i>
+                    <span>Network Tools</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom right, #121218 0%, #1e1e2a 100%);">
+        <div class="max-w-7xl mx-auto">
+            <div class="md:flex gap-12">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        <span class="gradient-text">Contact</span> Us
+                    </h2>
+                    <p class="text-gray-300 mb-8">
+                        Have a project in mind or need tech support? We'd love to hear from you. 
+                        Reach out through any of these channels or fill out the form.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold mb-1">Email</div>
+                                <a href="mailto:contact@hizakilabs.com" class="text-purple-400 hover:text-purple-300">contact@hizakilabs.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold mb-1">Phone</div>
+                                <a href="tel:+1234567890" class="text-blue-400 hover:text-blue-300">+1 (234) 567-890</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold mb-1">Location</div>
+                                <div class="text-gray-300">123 Tech Street, Digital City</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Connect With Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-purple-600 flex items-center justify-center transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-blue-600 flex items-center justify-center transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-pink-600 flex items-center justify-center transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-red-600 flex items-center justify-center transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-green-600 flex items-center justify-center transition">
+                                <i class="fab fa-spotify">

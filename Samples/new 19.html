@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizaki Labs - Tech Solutions & Creative Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .content-icon {
+            transition: all 0.3s ease;
+        }
+        .content-icon:hover {
+            transform: scale(1.1);
+            color: #3b82f6;
+        }
+        .animated-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .animated-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .animated-border:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dbd000ca-c8bc-462e-acd2-2faf35c91cfc.png" alt="Hizaki Labs Logo - Abstract circuit board design in blue and white" class="h-12 w-12 rounded-full">
+                <span class="text-2xl font-bold">Hizaki Labs</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#services" class="animated-border py-2 px-1 text-white hover:text-gray-200">Services</a>
+                <a href="#portfolio" class="animated-border py-2 px-1 text-white hover:text-gray-200">Portfolio</a>
+                <a href="#content" class="animated-border py-2 px-1 text-white hover:text-gray-200">Content</a>
+                <a href="#about" class="animated-border py-2 px-1 text-white hover:text-gray-200">About</a>
+                <a href="#contact" class="animated-border py-2 px-1 text-white hover:text-gray-200">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 md:pr-10 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Tech Solutions & Creative Innovation</h1>
+                <p class="text-xl mb-8">Where hardware meets creativity - Comprehensive technical services paired with digital media production.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition duration-300">Get in Touch</a>
+                    <a href="#services" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold transition duration-300">Our Services</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d42403d1-3c35-4193-a1ca-31b30423447e.png" alt="Modern tech workspace with multiple monitors showing creative software and hardware repair bench" class="rounded-lg shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Technical Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tech Repair Services -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md transition duration-300 border border-gray-100">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-laptop-code text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Hardware Repair & Maintenance</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Laptop/PC Diagnosis & Repair</li>
+                        <li>Operating System Installation</li>
+                        <li>Hardware Upgrades & Optimization</li>
+                        <li>Data Recovery Services</li>
+                        <li>Peripheral Configuration</li>
+                    </ul>
+                </div>
+
+                <!-- Networking Services -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md transition duration-300 border border-gray-100">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-network-wired text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Networking Solutions</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Home/Office Network Setup</li>
+                        <li>Wi-Fi Optimization</li>
+                        <li>Network Security</li>
+                        <li>Troubleshooting & Support</li>
+                        <li>Cloud Solutions</li>
+                    </ul>
+                </div>
+
+                <!-- Creative Services -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md transition duration-300 border border-gray-100">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fas fa-paint-brush text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Digital Creative Services</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Web Design & Development</li>
+                        <li>Video Editing & Production</li>
+                        <li>Computer Graphics Design</li>
+                        <li>Audio Editing & Music Production</li>
+                        <li>Content Creation Strategy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Showcase -->
+    <section id="portfolio" class="py-16 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Project Portfolio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tech Repair Projects -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-xl">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5e7fa0b2-0335-4ea7-a01a-a2720b684004.png" alt="Workshop bench with multiple laptop repairs in progress, showing tools and components" class="w-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Hardware</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Laptop Repair Series</h3>
+                        <p class="text-gray-600 mb-4">Complete diagnostics and repair solutions for hardware issues across multiple brands.</p>
+                    </div>
+                </div>
+
+                <!-- Web Design Projects -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-xl">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a143dfe1-de80-4f7d-852b-33524528b3ea.png" alt="Sleek website mockup on multiple devices with clean UI design" class="w-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Web Design</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Business Website Designs</h3>
+                        <p class="text-gray-600 mb-4">Responsive website solutions tailored for small businesses and entrepreneurs.</p>
+                    </div>
+                </div>
+
+                <!-- Video Production Projects -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-xl">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/70266083-c7b5-4365-8060-a9b06bfa73f8.png" alt="Professional video editing setup with timeline screens and studio equipment" class="w-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">Video</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Content Creator Series</h3>
+                        <p class="text-gray-600 mb-4">Full video production workflow from concept to final render for YouTube creators.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Platforms -->
+    <section id="content" class="py-16 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Content Platforms</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- YouTube Gaming -->
+                <div class="bg-gray-50 p-6 rounded-lg text-center shadow-sm transition duration-300 hover:shadow-md">
+                    <div class="content-icon text-red-500 mb-4">
+                        <i class="fab fa-youtube text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Gaming Channel</h3>
+                    <p class="text-gray-600 mb-4">Live streams, gameplay analysis, and gaming tech reviews.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:underline">Explore</a>
+                </div>
+
+                <!-- YouTube Coding -->
+                <div class="bg-gray-50 p-6 rounded-lg text-center shadow-sm transition duration-300 hover:shadow-md">
+                    <div class="content-icon text-red-500 mb-4">
+                        <i class="fab fa-youtube text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Coding Channel</h3>
+                    <p class="text-gray-600 mb-4">Tutorials, project breakdowns, and developer tool reviews.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:underline">Explore</a>
+                </div>
+
+                <!-- YouTube Anime -->
+                <div class="bg-gray-50 p-6 rounded-lg text-center shadow-sm transition duration-300 hover:shadow-md">
+                    <div class="content-icon text-red-500 mb-4">
+                        <i class="fab fa-youtube text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Anime & Memes</h3>
+                    <p class="text-gray-600 mb-4">Anime reviews, recommendations, and internet culture.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:underline">Explore</a>
+                </div>
+
+                <!-- Spotify Podcast -->
+                <div class="bg-gray-50 p-6 rounded-lg text-center shadow-sm transition duration-300 hover:shadow-md">
+                    <div class="content-icon text-green-500 mb-4">
+                        <i class="fab fa-spotify text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Audio Podcast</h3>
+                    <p class="text-gray-600 mb-4">Tech discussions, industry insights, and creative talks.</p>
+                    <a href="#" class="text-blue-600 font-medium hover:underline">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Goals -->
+    <section id="about" class="py-16 px-6 gradient-bg text-white">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold mb-6">Future Vision</h2>
+                    <p class="mb-6">Hizaki Labs is continuously evolving to embrace emerging technologies and creative opportunities. Our roadmap includes:</p>
+                    <ul class="list-disc space-y-3 pl-5">
+                        <li>Game Development & Interactive Media</li>
+                        <li>AI Integration & Machine Learning Solutions</li>
+                        <li>Custom PC Building Services</li>
+                        <li>Tech Education & Workshops</li>
+                        <li>Innovative Software Development</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d5a9d459-5a87-4e04-8911-356796c09e96.png" alt="Futuristic technology vision with holographic interfaces and circuit board backgrounds" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Get In Touch</h2>
+            <div class="bg-gray-50 rounded-xl shadow-md p-8">
+                <form class="grid grid-cols-1 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="service" class="block text-gray-700 mb-2">Service Interested In</label>
+                        <select id="service" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none">
+                            <option value="">Select a service</option>
+                            <option value="repair">Laptop/PC Repair</option>
+                            <option value="networking">Networking Solutions</option>
+                            <option value="web">Web Design</option>
+                            <option value="video">Video Production</option>
+                            <option value="music">Music Production</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 mb-2">Message</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none"></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Hizaki Labs</h3>
+                    <p class="text-gray-400">Where technology meets creativity to solve problems and inspire innovation.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white transition duration-300">Portfolio</a></li>
+                        <li><a href="#content" class="text-gray-400 hover:text-white transition duration-300">Content</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="content-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="content-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="content-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="content-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="content-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg transition duration-300">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400">
+                <p>© 2023 Hizaki Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+        const mobileMenuLinks = document.createElement('div');
+        mobileMenuLinks.className = 'md:hidden bg-gray-800 text-white py-4 px-6 absolute w-full z-10 hidden';
+        mobileMenuLinks.innerHTML = `
+            <div class="flex flex-col space-y-4">
+                <a href="#services" class="py-2">Services</a>
+                <a href="#portfolio" class="py-2">Portfolio</a>
+                <a href="#content" class="py-2">Content</a>
+                <a href="#about" class="py-2">About</a>
+                <a href="#contact" class="py-2">Contact</a>
+            </div>
+        `;
+        document.querySelector('nav').appendChild(mobileMenuLinks);
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuLinks.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                mobileMenuLinks.classList.add('hidden');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

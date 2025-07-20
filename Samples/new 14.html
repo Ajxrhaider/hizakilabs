@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizaki Labs - Tech & Creative Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark Blue-Gray Background */
+            color: #e5e7eb; /* Light Gray Text */
+        }
+        .hero-section {
+            background: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://placehold.co/1920x1080/1a202c/718096?text=Hizaki+Labs+Workspace') no-repeat center center/cover;
+        }
+        .service-card {
+            background-color: #1f2937; /* Darker card background */
+            border: 1px solid #374151; /* Subtle border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 100, 255, 0.1), 0 4px 6px -2px rgba(0, 100, 255, 0.05);
+        }
+        .btn-primary {
+            background-color: #3b82f6; /* Blue */
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+        .section-title {
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        nav a {
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">
+                <i class="fas fa-terminal mr-2"></i>Hizaki Labs
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#services" class="text-gray-300">Services</a>
+                <a href="#portfolio" class="text-gray-300">Portfolio</a>
+                <a href="#about" class="text-gray-300">About</a>
+                <a href="#contact" class="text-gray-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#services" class="block py-2 text-gray-300">Services</a>
+            <a href="#portfolio" class="block py-2 text-gray-300">Portfolio</a>
+            <a href="#about" class="block py-2 text-gray-300">About</a>
+            <a href="#contact" class="block py-2 text-gray-300">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section text-white text-center py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Hizaki Labs</h1>
+                <p class="text-lg md:text-2xl text-gray-300 mb-8">Your One-Stop Solution for Tech and Creative Media</p>
+                <a href="#contact" class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg">Get in Touch</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl font-bold text-center mb-12 inline-block">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Service Card: Laptop Repair -->
+                    <div class="service-card rounded-lg p-6 text-center">
+                        <i class="fas fa-laptop-medical text-4xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Laptop Repair</h3>
+                        <p class="text-gray-400">Expert hardware diagnostics and repair for all major laptop brands. Screens, keyboards, batteries, and more.</p>
+                    </div>
+
+                    <!-- Service Card: OS Installation -->
+                    <div class="service-card rounded-lg p-6 text-center">
+                        <i class="fab fa-windows text-4xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">OS Installation & Tuning</h3>
+                        <p class="text-gray-400">Fresh installations of Windows, macOS, or Linux. System optimization for peak performance.</p>
+                    </div>
+
+                    <!-- Service Card: Networking -->
+                    <div class="service-card rounded-lg p-6 text-center">
+                        <i class="fas fa-wifi text-4xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Networking Solutions</h3>
+                        <p class="text-gray-400">Home and small office network setup, troubleshooting, and security configuration.</p>
+                    </div>
+
+                    <!-- Service Card: Web Design -->
+                    <div class="service-card rounded-lg p-6 text-center">
+                        <i class="fas fa-code text-4xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Web Design</h3>
+                        <p class="text-gray-400">Modern, responsive websites tailored to your brand. From portfolios to e-commerce.</p>
+                    </div>
+
+                    <!-- Service Card: Video Editing -->
+                    <div class="service-card rounded-lg p-6 text-center">
+                        <i class="fas fa-video text-4xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Video Editing</h3>
+                        <p class="text-gray-400">Professional video editing, color grading, and motion graphics for any project.</p>
+                    </div>
+
+                    <!-- Service Card: Music Production -->
+                    <div class="service-card rounded-lg p-6 text-center">
+                        <i class="fas fa-music text-4xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Music Production</h3>
+                        <p class="text-gray-400">Custom beats, audio mixing, and mastering services to bring your sound to life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl font-bold text-center mb-12 inline-block">Our Work</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio Item 1 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/1f2937/e5e7eb?text=Web+Design+Project" alt="Web Design Project" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Corporate Website</h3>
+                            <p class="text-gray-400">A sleek, professional website for a local business.</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 2 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/1f2937/e5e7eb?text=Video+Editing+Project" alt="Video Editing Project" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Promotional Video</h3>
+                            <p class="text-gray-400">An engaging promotional video for a new product launch.</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 3 -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/1f2937/e5e7eb?text=Music+Production" alt="Music Production" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Album Mix & Master</h3>
+                            <p class="text-gray-400">Full EP mixed and mastered for an up-and-coming artist.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <img src="https://placehold.co/400x400/3b82f6/ffffff?text=H" alt="Hizaki Labs Owner" class="rounded-full mx-auto border-4 border-blue-500">
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h2 class="section-title text-3xl font-bold mb-6 inline-block">About Hizaki Labs</h2>
+                    <p class="text-gray-400 mb-4">
+                        My name is [Your Name], and I'm the founder of Hizaki Labs. With over [X] years of experience spanning the technical and creative fields, I started Hizaki Labs to offer a unique blend of services. My passion is problem-solving, whether it's reviving a faulty laptop, building a beautiful website, or producing a chart-topping track.
+                    </p>
+                    <p class="text-gray-400">
+                        I believe in quality, precision, and a client-first approach. Let's work together to bring your ideas to reality.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl font-bold text-center mb-12 inline-block">Contact Us</h2>
+                <div class="max-w-2xl mx-auto bg-gray-800 p-8 rounded-lg">
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-3 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full p-3 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:border-blue-500"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn-primary text-white font-bold py-3 px-8 rounded-lg w-full md:w-auto">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <div class="mb-4">
+                <a href="#" class="mx-3 text-xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="mx-3 text-xl hover:text-blue-400"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="mx-3 text-xl hover:text-blue-400"><i class="fab fa-github"></i></a>
+                <a href="#" class="mx-3 text-xl hover:text-blue-400"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2024 Hizaki Labs. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

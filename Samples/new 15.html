@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizaki Labs - Tech & Creative Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'hizaki-primary': '#0A74DA',
+                        'hizaki-secondary': '#0E1525',
+                        'hizaki-light': '#F0F5FA',
+                        'hizaki-dark': '#050A14',
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .service-card:hover .service-icon {
+            transform: translateY(-8px);
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-hizaki-dark font-inter text-hizaki-light antialiased">
+
+    <!-- Header -->
+    <header class="bg-hizaki-dark/80 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-white">
+                    Hizaki<span class="text-hizaki-primary">Labs</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-300 hover:text-hizaki-primary transition duration-300">Services</a>
+                    <a href="#about" class="text-gray-300 hover:text-hizaki-primary transition duration-300">About</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-hizaki-primary transition duration-300">Portfolio</a>
+                    <a href="#contact" class="bg-hizaki-primary text-white px-4 py-2 rounded-md hover:bg-hizaki-primary/90 transition duration-300">Contact</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-hizaki-secondary">
+            <a href="#services" class="block py-2 px-6 text-gray-300 hover:bg-hizaki-primary hover:text-white">Services</a>
+            <a href="#about" class="block py-2 px-6 text-gray-300 hover:bg-hizaki-primary hover:text-white">About</a>
+            <a href="#portfolio" class="block py-2 px-6 text-gray-300 hover:bg-hizaki-primary hover:text-white">Portfolio</a>
+            <a href="#contact" class="block py-2 px-6 text-gray-300 hover:bg-hizaki-primary hover:text-white">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1544890225-2fde0e66aa7d?q=80&w=2070&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-hizaki-dark/80"></div>
+            <div class="relative z-10 px-6 animate-fade-in-up">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                    Expert Tech & Creative Services
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    From laptop repairs and network setups to stunning web design and captivating multimedia production.
+                </p>
+                <a href="#contact" class="bg-hizaki-primary text-white font-bold py-3 px-8 rounded-full hover:bg-hizaki-primary/90 transition duration-300 transform hover:scale-105">
+                    Get a Free Quote
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-hizaki-secondary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our Services</h2>
+                    <p class="text-gray-400 mt-2">Your one-stop solution for all things tech and creative.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Technical Services -->
+                    <div class="animate-on-scroll">
+                        <h3 class="text-2xl font-semibold text-hizaki-primary mb-4 text-center">Technical Expertise</h3>
+                        <div class="space-y-6">
+                            <div class="service-card bg-hizaki-dark p-6 rounded-lg shadow-lg transition duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="service-icon bg-hizaki-primary/10 p-3 rounded-full transition duration-300">
+                                        <svg class="w-8 h-8 text-hizaki-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white">Laptop Repair</h4>
+                                        <p class="text-gray-400 mt-1">Hardware diagnostics, screen replacement, battery issues, and performance upgrades.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card bg-hizaki-dark p-6 rounded-lg shadow-lg transition duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="service-icon bg-hizaki-primary/10 p-3 rounded-full transition duration-300">
+                                        <svg class="w-8 h-8 text-hizaki-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white">OS Installation</h4>
+                                        <p class="text-gray-400 mt-1">Windows, macOS, and Linux installations, troubleshooting, and optimization.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card bg-hizaki-dark p-6 rounded-lg shadow-lg transition duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="service-icon bg-hizaki-primary/10 p-3 rounded-full transition duration-300">
+                                        <svg class="w-8 h-8 text-hizaki-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white">Networking</h4>
+                                        <p class="text-gray-400 mt-1">Home & small office network setup, Wi-Fi optimization, and security.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Spacer for layout on large screens -->
+                    <div class="hidden lg:block"></div>
+                    <!-- Creative Services -->
+                    <div class="animate-on-scroll" style="animation-delay: 0.2s;">
+                         <h3 class="text-2xl font-semibold text-hizaki-primary mb-4 text-center">Creative Suite</h3>
+                         <div class="space-y-6">
+                            <div class="service-card bg-hizaki-dark p-6 rounded-lg shadow-lg transition duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="service-icon bg-hizaki-primary/10 p-3 rounded-full transition duration-300">
+                                        <svg class="w-8 h-8 text-hizaki-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white">Web Design</h4>
+                                        <p class="text-gray-400 mt-1">Responsive, modern websites that look great on all devices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card bg-hizaki-dark p-6 rounded-lg shadow-lg transition duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="service-icon bg-hizaki-primary/10 p-3 rounded-full transition duration-300">
+                                        <svg class="w-8 h-8 text-hizaki-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white">Video Editing</h4>
+                                        <p class="text-gray-400 mt-1">Professional video editing for promotional content, tutorials, and more.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card bg-hizaki-dark p-6 rounded-lg shadow-lg transition duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="service-icon bg-hizaki-primary/10 p-3 rounded-full transition duration-300">
+                                        <svg class="w-8 h-8 text-hizaki-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z"></path></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white">Computer Graphics</h4>
+                                        <p class="text-gray-400 mt-1">Logos, branding materials, and custom graphics for web and print.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card bg-hizaki-dark p-6 rounded-lg shadow-lg transition duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <div class="service-icon bg-hizaki-primary/10 p-3 rounded-full transition duration-300">
+                                        <svg class="w-8 h-8 text-hizaki-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 6l12 3"></path></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-semibold text-white">Music Production</h4>
+                                        <p class="text-gray-400 mt-1">Custom beats, sound design, and audio mixing for your projects.</p>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-hizaki-dark">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
+                             alt="A technician working on a laptop" 
+                             class="rounded-lg shadow-2xl w-full h-auto object-cover"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/0E1525/F0F5FA?text=Hizaki+Labs';">
+                    </div>
+                    <div class="md:w-1/2 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Hizaki Labs</h2>
+                        <p class="text-gray-400 mb-4">
+                            My name is [Your Name], and I'm the founder of Hizaki Labs. With over [X] years of experience, I bridge the gap between technical troubleshooting and creative innovation. My passion lies in solving complex problems, whether it's reviving a faulty laptop or bringing a creative vision to life through code, visuals, or sound.
+                        </p>
+                        <p class="text-gray-400 mb-6">
+                            I believe in providing reliable, high-quality service with a personal touch. At Hizaki Labs, you're not just another client; you're a partner. I'm dedicated to understanding your needs and delivering solutions that exceed your expectations.
+                        </p>
+                        <a href="#contact" class="bg-hizaki-primary text-white font-bold py-3 px-6 rounded-md hover:bg-hizaki-primary/90 transition duration-300">Let's Work Together</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-hizaki-secondary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">My Work</h2>
+                    <p class="text-gray-400 mt-2">A selection of my recent projects.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio Item 1: Web Design -->
+                    <div class="portfolio-item bg-hizaki-dark rounded-lg overflow-hidden shadow-lg group animate-on-scroll">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1559028006-44a3a4f365ea?q=80&w=1935&auto=format&fit=crop" 
+                                 alt="Web Design Project" 
+                                 class="w-full h-56 object-cover transition duration-500 ease-in-out"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/400x300/0A74DA/FFFFFF?text=Web+Project';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-white mb-2">Corporate Website Redesign</h3>
+                            <p class="text-hizaki-primary font-medium mb-3">Web Design</p>
+                            <p class="text-gray-400 text-sm">A complete redesign for a local business, focusing on a modern UI/UX and mobile-first responsiveness.</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 2: Music Production -->
+                    <div class="portfolio-item bg-hizaki-dark rounded-lg overflow-hidden shadow-lg group animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop" 
+                                 alt="Music Production Project" 
+                                 class="w-full h-56 object-cover transition duration-500 ease-in-out"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/400x300/0A74DA/FFFFFF?text=Music+Project';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-white mb-2">Indie Artist EP</h3>
+                            <p class="text-hizaki-primary font-medium mb-3">Music Production</p>
+                            <p class="text-gray-400 text-sm">Produced, mixed, and mastered a 5-track EP, creating a unique soundscape for an emerging artist.</p>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 3: Laptop Repair/Upgrade -->
+                    <div class="portfolio-item bg-hizaki-dark rounded-lg overflow-hidden shadow-lg group animate-on-scroll" style="animation-delay: 0.4s;">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=2069&auto=format&fit=crop" 
+                                 alt="Laptop Upgrade Project" 
+                                 class="w-full h-56 object-cover transition duration-500 ease-in-out"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/400x300/0A74DA/FFFFFF?text=Repair+Project';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-white mb-2">Gaming Laptop Overhaul</h3>
+                            <p class="text-hizaki-primary font-medium mb-3">Laptop Repair</p>
+                            <p class="text-gray-400 text-sm">Upgraded RAM, installed a new SSD, and performed a deep clean to boost gaming performance by 50%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-hizaki-dark">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Get in Touch</h2>
+                    <p class="text-gray-400 mt-2">Have a project in mind or a tech problem? I'm here to help.</p>
+                </div>
+                <div class="max-w-2xl mx-auto bg-hizaki-secondary p-8 rounded-lg shadow-2xl animate-on-scroll">
+                    <form id="contact-form">
+                        <div id="form-result" class="mb-4"></div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" id="name" name="name" placeholder="Your Name" class="w-full bg-hizaki-dark border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-hizaki-primary" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" class="w-full bg-hizaki-dark border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-hizaki-primary" required>
+                        </div>
+                        <div class="mb-6">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" class="w-full bg-hizaki-dark border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-hizaki-primary" required>
+                        </div>
+                        <div class="mb-6">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" class="w-full bg-hizaki-dark border border-gray-700 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-hizaki-primary" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-hizaki-primary text-white font-bold py-3 px-8 rounded-full hover:bg-hizaki-primary/90 transition duration-300 w-full md:w-auto">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-hizaki-secondary border-t border-gray-800">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p>&copy; <span id="current-year"></span> Hizaki Labs. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Designed & Built by Hizaki Labs</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Animate on scroll
+        const scrollElements = document.querySelectorAll('.animate-on-scroll');
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+        const displayScrollElement = (element) => {
+            element.classList.add('is-visible');
+        };
+        const hideScrollElement = (element) => {
+            element.classList.remove('is-visible');
+        }
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        }
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+        // Initial check
+        handleScrollAnimation();
+
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const formResult = document.getElementById('form-result');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real scenario, you would send this data to a server or a service like Formspree.
+            // For this template, we'll just simulate a success message.
+            
+            const name = document.getElementById('name').value;
+            formResult.innerHTML = `
+                <div class="bg-green-500/20 border border-green-500 text-green-300 px-4 py-3 rounded-md mb-4">
+                    <strong>Thank you, ${name}!</strong> Your message has been sent successfully. I'll get back to you shortly.
+                </div>
+            `;
+            contactForm.reset();
+
+            // Remove the message after a few seconds
+            setTimeout(() => {
+                formResult.innerHTML = '';
+            }, 5000);
+        });
+
+    </script>
+
+</body>
+</html>

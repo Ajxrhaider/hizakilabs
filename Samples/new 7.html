@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizaki Labs - Your Tech & Creative Partner</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 fixed w-full z-50 rounded-b-lg">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-700">Hizaki Labs</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-indigo-700 transition duration-300">Home</a>
+                <a href="#services" class="text-gray-600 hover:text-indigo-700 transition duration-300">Services</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-indigo-700 transition duration-300">Portfolio</a>
+                <a href="#content" class="text-gray-600 hover:text-indigo-700 transition duration-300">Content</a>
+                <a href="#about" class="text-gray-600 hover:text-indigo-700 transition duration-300">About</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-700 transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-700 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden md:hidden flex-col items-center justify-center space-y-6">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-600 hover:text-indigo-700 focus:outline-none">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+        <a href="#home" class="text-gray-800 text-2xl hover:text-indigo-700 transition duration-300" onclick="toggleMobileMenu()">Home</a>
+        <a href="#services" class="text-gray-800 text-2xl hover:text-indigo-700 transition duration-300" onclick="toggleMobileMenu()">Services</a>
+        <a href="#portfolio" class="text-gray-800 text-2xl hover:text-indigo-700 transition duration-300" onclick="toggleMobileMenu()">Portfolio</a>
+        <a href="#content" class="text-gray-800 text-2xl hover:text-indigo-700 transition duration-300" onclick="toggleMobileMenu()">Content</a>
+        <a href="#about" class="text-gray-800 text-2xl hover:text-indigo-700 transition duration-300" onclick="toggleMobileMenu()">About</a>
+        <a href="#contact" class="text-gray-800 text-2xl hover:text-indigo-700 transition duration-300" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="home" class="relative bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-20 px-6 md:px-12 flex items-center justify-center min-h-screen-75 rounded-b-lg">
+            <div class="container mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-fade-in-up">Hizaki Labs</h1>
+                <p class="text-lg md:text-2xl mb-8 animate-fade-in-up delay-200">Your Partner in Tech Solutions & Creative Innovations</p>
+                <a href="#services" class="bg-white text-indigo-700 hover:bg-indigo-100 px-8 py-3 rounded-full text-lg font-semibold transition duration-300 shadow-lg animate-fade-in-up delay-400">Explore Services</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 px-6 md:px-12 bg-gray-50 rounded-lg shadow-inner mx-4 md:mx-auto max-w-6xl mt-8">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Our Expertise</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Tech Services -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                        <div class="text-indigo-600 text-5xl mb-6 text-center"><i class="fas fa-laptop-code"></i></div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Tech Solutions</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Laptop Repair & Maintenance</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Operating System Installation & Optimization</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Network Setup & Troubleshooting</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Data Recovery & Backup</li>
+                        </ul>
+                    </div>
+
+                    <!-- Creative Services -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                        <div class="text-purple-600 text-5xl mb-6 text-center"><i class="fas fa-palette"></i></div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Creative Innovations</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Web Design & Development</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Video Editing & Production</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Computer Graphics & Visuals</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Music Production & Audio Engineering</li>
+                        </ul>
+                    </div>
+
+                    <!-- Digital Presence -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                        <div class="text-teal-600 text-5xl mb-6 text-center"><i class="fas fa-share-alt"></i></div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Digital Presence</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Content Strategy & Creation</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Podcast Production & Distribution</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>YouTube Channel Management</li>
+                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Social Media Engagement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 px-6 md:px-12 bg-white rounded-lg shadow-inner mx-4 md:mx-auto max-w-6xl mt-8">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">Our Work</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio Item 1: Web Design -->
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://placehold.co/600x400/E0F2F7/000?text=Web+Design+Project" alt="Web Design Project" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Modern Business Website</h3>
+                        <p class="text-gray-700 text-sm">Crafted a responsive and user-friendly website for a local business, focusing on seamless navigation and engaging visuals.</p>
+                        <a href="#" class="text-indigo-600 hover:underline mt-3 inline-block">View Project <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
+                    </div>
+
+                    <!-- Portfolio Item 2: Video Production -->
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://placehold.co/600x400/E0F2F7/000?text=Video+Production+Project" alt="Video Production Project" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Brand Promotional Video</h3>
+                        <p class="text-gray-700 text-sm">Produced a dynamic promotional video, from concept to final edit, enhancing brand storytelling and engagement.</p>
+                        <a href="#" class="text-indigo-600 hover:underline mt-3 inline-block">View Project <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
+                    </div>
+
+                    <!-- Portfolio Item 3: Computer Graphics -->
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://placehold.co/600x400/E0F2F7/000?text=Graphics+Design+Project" alt="Computer Graphics Project" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">3D Product Visualization</h3>
+                        <p class="text-gray-700 text-sm">Created stunning 3D renders and animations for product visualization, bringing concepts to life with intricate detail.</p>
+                        <a href="#" class="text-indigo-600 hover:underline mt-3 inline-block">View Project <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
+                    </div>
+
+                    <!-- Portfolio Item 4: Music Production -->
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://placehold.co/600x400/E0F2F7/000?text=Music+Production+Project" alt="Music Production Project" class="rounded-lg mb-4 w-full h-48 object-cover">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Original Soundtrack Composition</h3>
+                        <p class="text-gray-700 text-sm">Composed and produced an original soundtrack for a short film, enhancing the emotional depth and narrative.</p>
+                        <a href="#" class="text-indigo-600 hover:underline mt-3 inline-block">Listen Here <i class="fas fa-arrow-right ml-1 text-sm"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Creation Section -->
+        <section id="content" class="py-16 px-6 md:px-12 bg-gray-50 rounded-lg shadow-inner mx-4 md:mx-auto max-w-6xl mt-8">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold text-gray-900 mb-12">My Content Universe</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Spotify Podcast -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                        <div class="text-green-500 text-5xl mb-6"><i class="fab fa-spotify"></i></div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">The Hizaki Labs Podcast</h3>
+                        <p class="text-gray-700 mb-6">Dive deep into tech trends, creative insights, and personal journeys. Available on Spotify and other major podcast platforms.</p>
+                        <a href="https://open.spotify.com/show/YOUR_PODCAST_ID" target="_blank" class="bg-green-500 text-white hover:bg-green-600 px-6 py-3 rounded-full font-semibold transition duration-300 shadow-md">Listen Now <i class="fas fa-external-link-alt ml-2"></i></a>
+                    </div>
+
+                    <!-- YouTube Channel: Gaming -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                        <div class="text-red-600 text-5xl mb-6"><i class="fab fa-youtube"></i></div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Hizaki Gaming</h3>
+                        <p class="text-gray-700 mb-6">Join me for epic gaming adventures, reviews, and live streams. Get ready to level up!</p>
+                        <a href="https://www.youtube.com/channel/YOUR_GAMING_CHANNEL_ID" target="_blank" class="bg-red-600 text-white hover:bg-red-700 px-6 py-3 rounded-full font-semibold transition duration-300 shadow-md">Watch Now <i class="fas fa-external-link-alt ml-2"></i></a>
+                    </div>
+
+                    <!-- YouTube Channel: Coding -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                        <div class="text-red-600 text-5xl mb-6"><i class="fab fa-youtube"></i></div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Hizaki Codes</h3>
+                        <p class="text-gray-700 mb-6">Your go-to channel for coding tutorials, project walkthroughs, and developer insights. Learn to build amazing things!</p>
+                        <a href="https://www.youtube.com/channel/YOUR_CODING_CHANNEL_ID" target="_blank" class="bg-red-600 text-white hover:bg-red-700 px-6 py-3 rounded-full font-semibold transition duration-300 shadow-md">Watch Now <i class="fas fa-external-link-alt ml-2"></i></a>
+                    </div>
+
+                    <!-- YouTube Channel: Anime & Memes -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                        <div class="text-red-600 text-5xl mb-6"><i class="fab fa-youtube"></i></div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Hizaki Anime & Memes</h3>
+                        <p class="text-gray-700 mb-6">For all things anime, hilarious memes, and pop culture discussions. Let's have some fun!</p>
+                        <a href="https://www.youtube.com/channel/YOUR_ANIME_MEMES_CHANNEL_ID" target="_blank" class="bg-red-600 text-white hover:bg-red-700 px-6 py-3 rounded-full font-semibold transition duration-300 shadow-md">Watch Now <i class="fas fa-external-link-alt ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 px-6 md:px-12 bg-white rounded-lg shadow-inner mx-4 md:mx-auto max-w-6xl mt-8">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">About Hizaki Labs</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="md:w-1/3 mb-8 md:mb-0">
+                        <img src="https://placehold.co/400x400/E0F2F7/000?text=Your+Profile+Picture" alt="Your Profile" class="rounded-full w-64 h-64 mx-auto object-cover shadow-lg">
+                    </div>
+                    <div class="md:w-2/3 text-center md:text-left">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Welcome to Hizaki Labs, where technology meets creativity! I'm a passionate technician and creative professional dedicated to providing top-notch solutions for your digital needs. From fixing your laptop to crafting stunning websites and producing captivating content, I bring a unique blend of technical expertise and artistic vision to every project.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            My journey began with a deep fascination for how things work, leading me into laptop repair, OS installations, and networking. This foundation quickly expanded into the creative realm, embracing web design, video editing, computer graphics, and music production. As a content creator, I share my insights and passions across various platforms, including my Spotify podcast and YouTube channels dedicated to gaming, coding, and anime/memes.
+                        </p>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Future Horizons</h3>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Looking ahead, Hizaki Labs is set to venture into exciting new territories, including game development, cutting-edge AI development, and bespoke PC building. My commitment is to continuously innovate and deliver exceptional value, pushing the boundaries of what's possible in the tech and creative landscape. Join me on this exciting journey!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Contact Section -->
+        <section id="contact" class="py-16 px-6 md:px-12 bg-gradient-to-r from-indigo-700 to-purple-700 text-white rounded-lg shadow-xl mx-4 md:mx-auto max-w-6xl mt-8 mb-8">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-6">Ready to Collaborate?</h2>
+                <p class="text-xl mb-8">Let's build something amazing together. Reach out for inquiries, projects, or just to say hello!</p>
+                <a href="mailto:your_email@example.com" class="bg-white text-indigo-700 hover:bg-indigo-100 px-8 py-4 rounded-full text-xl font-semibold transition duration-300 shadow-lg">Get in Touch <i class="fas fa-envelope ml-2"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-6 md:px-12 rounded-t-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-bold text-indigo-400">Hizaki Labs</h3>
+                <p class="text-gray-400 text-sm">&copy; 2025 All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6 mb-4 md:mb-0">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <a href="https://www.youtube.com/channel/YOUR_YOUTUBE_CHANNEL_ID" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-youtube text-xl"></i></a>
+                <a href="https://open.spotify.com/show/YOUR_PODCAST_ID" target="_blank" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-spotify text-xl"></i></a>
+            </div>
+            <div>
+                <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-gray-400">
+                    <li><a href="#services" class="hover:text-white transition duration-300">Services</a></li>
+                    <li><a href="#portfolio" class="hover:text-white transition duration-300">Portfolio</a></li>
+                    <li><a href="#content" class="hover:text-white transition duration-300">Content</a></li>
+                    <li><a href="#about" class="hover:text-white transition duration-300">About</a></li>
+                    <li><a href="#contact" class="hover:text-white transition duration-300">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        closeMobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // Simple animation for hero section elements
+        const animateElements = document.querySelectorAll('.animate-fade-in-up');
+        animateElements.forEach((el, index) => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                el.style.opacity = 1;
+                el.style.transform = 'translateY(0)';
+            }, 200 * index); // Staggered animation
+        });
+    </script>
+</body>
+</html>

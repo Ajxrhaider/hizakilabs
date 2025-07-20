@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizaki Labs - Where Technology Meets Creativity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --dark: #121212;
+            --light: #f4f4f4;
+            --accent: #00d2ff;
+            --neon: #00ff9d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--neon);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--neon);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(110, 72, 170, 0.6);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(45deg, var(--accent), var(--neon));
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.6);
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--neon);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--neon);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            margin-bottom: 20px;
+            font-size: 4rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .quick-link {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .quick-link i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .service-card i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .service-list {
+            list-style: none;
+        }
+        
+        .service-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .service-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--neon);
+        }
+        
+        /* Content Section */
+        .content-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-btn {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .tab-btn.active {
+            color: var(--neon);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--neon);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .channel-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .channel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .channel-header i {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .video-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #333;
+            position: relative;
+        }
+        
+        .video-thumbnail::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h4 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background-color: rgba(0, 210, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links h4 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .quick-links {
+                flex-direction: column;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Hizaki<span>Labs</span></a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#content">Content</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Where Technology Meets Creativity</h1>
+                <p>Hi, I'm Hizaki. I bridge the gap between technical expertise and creative innovation through laptop repairs, content creation, and digital artistry.</p>
+                <a href="#contact" class="btn btn-accent">Get In Touch</a>
+                
+                <div class="quick-links">
+                    <a href="#services" class="quick-link">
+                        <i class="fas fa-tools"></i>
+                        <span>Tech Services</span>
+                    </a>
+                    <a href="#services" class="quick-link">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>Creative Services</span>
+                    </a>
+                    <a href="#content" class="quick-link">
+                        <i class="fas fa-play-circle"></i>
+                        <span>My Content</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>My Services</h2>
+            <p>Comprehensive solutions for your technical and creative needs</p>
+            
+            <div class="services-grid">
+                <!-- Technical Services -->
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Technical Services</h3>
+                    <ul class="service-list">
+                        <li>Laptop Repair & Maintenance</li>
+                        <li>OS Installation (Windows, Linux, macOS)</li>
+                        <li>Hardware Upgrades & Optimization</li>
+                        <li>Network Setup & Troubleshooting</li>
+                        <li>Virus Removal & Security</li>
+                    </ul>
+                </div>
+                
+                <!-- Creative Services -->
+                <div class="service-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Creative Services</h3>
+                    <ul class="service-list">
+                        <li>Web Design & Development</li>
+                        <li>Video Editing & Production</li>
+                        <li>Graphic Design & Digital Art</li>
+                        <li>Music Production & Audio Editing</li>
+                        <li>Podcast Production</li>
+                    </ul>
+                </div>
+                
+                <!-- Future Ventures -->
+                <div class="service-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Future Ventures</h3>
+                    <ul class="service-list">
+                        <li>Game Development (Coming Soon)</li>
+                        <li>AI Tools & Automation (Coming Soon)</li>
+                        <li>Custom PC Building (Coming Soon)</li>
+                        <li>3D Modeling & Animation</li>
+                        <li>VR/AR Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section id="content">
+        <div class="container">
+            <h2>My Content</h2>
+            <p>Explore my creative work across multiple platforms</p>
+            
+            <div class="content-tabs">
+                <button class="tab-btn active" data-tab="podcast">Podcast</button>
+                <button class="tab-btn" data-tab="youtube">YouTube</button>
+            </div>
+            
+            <div class="tab-content active" id="podcast">
+                <div class="channel-card">
+                    <div class="channel-header">
+                        <i class="fas fa-podcast"></i>
+                        <h3>Hizaki Labs Podcast</h3>
+                    </div>
+                    <p>Join me as I discuss technology, creativity, and the intersection between them. Available on all major podcast platforms.</p>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-thumbnail" style="background-color: #1DB954;"></div>
+                            <div class="video-info">
+                                <h4>Latest Episode: The Future of AI Creativity</h4>
+                                <p>Spotify • 45 min</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail" style="background-color: #1DB954;"></div>
+                            <div class="video-info">
+                                <h4>Building a Tech Business</h4>
+                                <p>Spotify • 38 min</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn" style="margin-top: 20px;">Listen on Spotify</a>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="youtube">
+                <div class="channel-card">
+                    <div class="channel-header">
+                        <i class="fab fa-youtube"></i>
+                        <h3>Hizaki Gaming</h3>
+                    </div>
+                    <p>Gameplay, reviews, and livestreams of my favorite games.</p>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-thumbnail"></div>
+                            <div class="video-info">
+                                <h4>Cyberpunk 2077: Phantom Liberty Review</h4>
+                                <p>2 days ago • 15:32</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail"></div>
+                            <div class="video-info">
+                                <h4>Baldur's Gate 3 - Insane Tactician Mode Run</h4>
+                                <p>1 week ago • 42:18</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn" style="margin-top: 20px;">Visit Channel</a>
+                </div>
+                
+                <div class="channel-card">
+                    <div class="channel-header">
+                        <i class="fab fa-youtube"></i>
+                        <h3>Hizaki Code</h3>
+                    </div>
+                    <p>Programming tutorials, project walkthroughs, and tech discussions.</p>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-thumbnail"></div>
+                            <div class="video-info">
+                                <h4>Building a Website Like This One</h4>
+                                <p>3 days ago • 25:45</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail"></div>
+                            <div class="video-info">
+                                <h4>Python Automation for Beginners</h4>
+                                <p>2 weeks ago • 18:32</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn" style="margin-top: 20px;">Visit Channel</a>
+                </div>
+                
+                <div class="channel-card">
+                    <div class="channel-header">
+                        <i class="fab fa-youtube"></i>
+                        <h3>Hizaki Anime & Memes</h3>
+                    </div>
+                    <p>Fun edits, anime discussions, and meme compilations.</p>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-thumbnail"></div>
+                            <div class="video-info">
+                                <h4>Best Anime of 2023 So Far</h4>
+                                <p>5 days ago • 12:18</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail"></div>
+                            <div class="video-info">
+                                <h4>Tech Memes That Hurt</h4>
+                                <p>3 weeks ago • 8:42</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn" style="margin-top: 20px;">Visit Channel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Hizaki Labs</h2>
+            
+            <div class="about-content">
+                <div>
+                    <p>Hizaki Labs was founded with the vision of bridging the gap between technical expertise and creative innovation. What started as a passion for fixing computers has grown into a multifaceted business that combines technology with artistry.</p>
+                    
+                    <p>As a technician, I understand the importance of precision and problem-solving. As a creative, I value expression and innovation. Hizaki Labs brings these two worlds together to deliver unique solutions that go beyond the ordinary.</p>
+                    
+                    <div class="skills">
+                        <div class="skill-category">
+                            <h4>Technical Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Hardware Repair</span>
+                                <span class="skill-tag">OS Installation</span>
+                                <span class="skill-tag">Networking</span>
+                                <span class="skill-tag">Troubleshooting</span>
+                                <span class="skill-tag">System Optimization</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Creative Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Web Design</span>
+                                <span class="skill-tag">Video Editing</span>
+                                <span class="skill-tag">Graphic Design</span>
+                                <span class="skill-tag">Music Production</span>
+                                <span class="skill-tag">Content Creation</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Future Focus</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Game Development</span>
+                                <span class="skill-tag">AI Integration</span>
+                                <span class="skill-tag">PC Building</span>
+                                <span class="skill-tag">3D Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Workspace" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind or need technical assistance? Reach out!</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:contact@hizakilabs.com">contact@hizakilabs.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Serving clients locally and remotely</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Monday - Friday: 9am - 6pm</p>
+                            <p>Weekends: By appointment</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4>Follow Me</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="repair">Laptop Repair</option>
+                                <option value="os">OS Installation</option>
+                                <option value="network">Networking</option>
+                                <option value="web">Web Design</option>
+                                <option value="video">Video Editing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-accent">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Hizaki<span>Labs</span></div>
+                    <p>Where Technology Meets Creativity</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Tech Repairs</a></li>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Video Production</a></li>
+                        <li><a href="#">Content Creation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Content</h4>
+                    <ul>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Podcast</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hizaki Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

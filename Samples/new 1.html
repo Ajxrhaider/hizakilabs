@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizaki Labs - Comprehensive Technical & Creative Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #111827;
+            --light: #f3f4f6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .tech-icon {
+            filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.7));
+        }
+        
+        .neon-border {
+            position: relative;
+        }
+        
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .neon-border:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+    <!-- Navigation -->
+    <nav class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">Hizaki Labs</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-border">Services</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-border">Portfolio</a>
+                    <a href="#content" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-border">Content</a>
+                    <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-border">About</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-border">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" class="text-gray-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#services" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="#content" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Content</a>
+                <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 opacity-80"></div>
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/950473f1-008b-44aa-ab44-41cbb00c0592.png" alt="Futuristic laboratory with glowing computer components and digital interfaces" class="absolute inset-0 w-full h-full object-cover z-0">
+        
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+                <span class="gradient-text">Hizaki Labs</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
+                Comprehensive technical solutions and creative services for the digital age. 
+                Bridging technology and creativity to power your digital presence.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-medium transition duration-300 transform hover:scale-105">
+                    Get Started
+                </a>
+                <a href="#services" class="px-8 py-3 bg-transparent border-2 border-indigo-500 hover:bg-indigo-500/10 rounded-full text-white font-medium transition duration-300 transform hover:scale-105">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl mb-3">
+                    Our <span class="gradient-text">Services</span>
+                </h2>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                    Comprehensive solutions covering technical support, creative services, and digital content creation.
+                </p>
+            </div>
+            
+            <!-- Technical Services -->
+            <div class="mb-16">
+                <h3 class="text-xl font-semibold text-indigo-300 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 tech-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Technical Services
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Cards -->
+                    <div class="service-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-900/50 p-3 rounded-lg mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Laptop Repair</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            Professional hardware diagnostics and repairs for laptops of all makes and models. Screen replacements, keyboard fixes, battery replacements, and more.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-900/50 p-3 rounded-lg mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">OS Installation</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            Clean installation and configuration of Windows, Linux, or macOS. Driver installation, system optimization, and data migration services available.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-900/50 p-3 rounded-lg mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Networking Solutions</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            Home and small business network setup, troubleshooting, and optimization. Includes router configuration, Wi-Fi range extension, and security setup.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Creative Services -->
+            <div class="mb-16">
+                <h3 class="text-xl font-semibold text-purple-300 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 tech-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    Creative & Digital Services
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-900/50 p-3 rounded-lg mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5 5 0 10-9.78 2.096A4 4 0 003 15z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Web Design</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            Custom website design and development tailored to your brand and business needs. Responsive, modern designs with optimized performance.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-900/50 p-3 rounded-lg mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Video Production</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            Full-service video production including shooting, editing, color grading, and post-production for YouTube, commercials, and corporate videos.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-900/50 p-3 rounded-lg mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Computer Graphics</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            Graphic design services including logos, branding, digital illustrations, and print materials. Specializing in tech-inspired designs.
+                        </p>
+                    </div>
+                    
+                    <div class="service-card bg-gray-800 rounded-xl p-6 shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-900/50 p-3 rounded-lg mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Music Production</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            Professional audio production, mixing, and mastering services for music, podcasts, and audio branding. Original compositions available.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio/Content Section -->
+    <section id="portfolio" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl mb-3">
+                    <span class="gradient-text">Content & Portfolio</span>
+                </h2>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+                    Explore our creative work and digital content across multiple platforms.
+                </p>
+            </div>
+            
+            <!-- YouTube Channels -->
+            <div class="mb-16">
+                <h3 class="text-xl font-semibold text-pink-300 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 tech-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    YouTube Channels
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-700/50 rounded-lg overflow-hidden shadow-lg transition hover:transform hover:scale-105">
+                        <div class="relative aspect-video">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/68f4fb80-70a5-4e04-a37f-aed0b5069c26.png" alt="Gaming YouTube channel banner featuring popular game characters and neon effects" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-4">
+                                <span class="px-2 py-1 bg-red-600 text-white text-xs font-bold rounded">Gaming</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-white mb-1">Hizaki Plays</h4>
+                            <p class="text-gray-400 text-sm">Gameplay, reviews, and commentary on the latest games</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 rounded-lg overflow-hidden shadow-lg transition hover:transform hover:scale-105">
+                        <div class="relative aspect-video">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a76b37d3-4a68-4571-ae3b-11964ee8ec59.png" alt="Coding YouTube channel banner showing code snippets on a dark background with syntax highlighting" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-4">
+                                <span class="px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded">Programming</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-white mb-1">Hizaki Codes</h4>
+                            <p class="text-gray-400 text-sm">Tutorials, projects, and tech discussions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 rounded-lg overflow-hidden shadow-lg transition hover:transform hover:scale-105">
+                        <div class="relative aspect-video">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9ae058e8-5c43-46b1-bb5c-b0f9892415a7.png" alt="Anime YouTube channel banner featuring popular anime characters in colorful collage" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-4">
+                                <span class="px-2 py-1 bg-purple-600 text-white text-xs font-bold rounded">Anime</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-white mb-1">Hizaki Anime</h4>
+                            <p class="text-gray-400 text-sm">Reviews, memes, and discussions about anime culture</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Podcast -->
+            <div class="mb-16">
+                <h3 class="text-xl font-semibold text-green-300 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 tech-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                    Podcast
+                </h3>
+                <div class="bg-gray-700/50 rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-shrink-0 w-full md:w-64">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/68a05b4d-53d8-428e-9e9c-bb1b64d11ffd.png" alt="Podcast cover artwork with microphone and sound waves in tech-inspired design" class="rounded-lg w-full aspect-square object-cover">
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-2xl font-bold text-white mb-3">Hizaki Talks Tech</h4>
+                        <p class="text-gray-300 mb-4">
+                            Weekly discussions about technology, creativity, and digital culture. Available on Spotify and all major podcast platforms.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-full text-white text-sm font-medium transition flex items-center

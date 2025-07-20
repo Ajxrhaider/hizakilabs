@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hizaki Labs</title>
+
+  <!-- Animate.css for plug-in effects -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    /* Base Styling */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #f5f5f5;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(to right, #570d7f, #2a2a72);
+      color: white;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    nav li {
+      margin: 5px 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #6f42c1;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background-color: #8235d0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e1e1e;
+      font-size: 0.9rem;
+    }
+
+    /* Scroll reveal animation */
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-in-out;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        width: 80%;
+        font-size: 1rem;
+      }
+
+      footer {
+        padding: 15px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="animate__animated animate__fadeInDown">Welcome to Hizaki Labs</h1>
+    <p>Tech Repair • Creative Content • Digital Innovation</p>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Podcasts & Channels</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <button>Explore Our Services</button>
+  </header>
+
+  <main>
+    <section class="animate-on-scroll" style="padding: 40px; text-align: center;">
+      <h2>Services</h2>
+      <p>From hardware fixes to creative content production, Hizaki Labs delivers it all.</p>
+    </section>
+
+    <section class="animate-on-scroll" style="padding: 40px; text-align: center;">
+      <h2>Media Channels</h2>
+      <p>Gaming, coding, anime & Spotify podcast — a fusion of tech and entertainment.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Hizaki Labs</p>
+    <ul style="list-style: none; padding: 0;">
+      <li><a href="#" style="color:#aaa;">YouTube</a></li>
+      <li><a href="#" style="color:#aaa;">Spotify</a></li>
+      <li><a href="#" style="color:#aaa;">Twitter</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Scroll animation trigger
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
