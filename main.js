@@ -1,55 +1,63 @@
- // Get current year for footer
- function getCurrentYear() {
-  const date = new Date();
-  return date.getFullYear();
-}
-// Set the current year in the footer
-document.addEventListener('DOMContentLoaded', () => {
-  const yearElement = document.getElementById('current-year');
-document.getElementById('current-year').textContent = new Date().getFullYear();
+// Function to get the current year
 function getCurrentYear() {
   const date = new Date();
   return date.getFullYear();
 }
+
+// Add an event listener to run code after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+
+  // --- Footer Year Logic ---
   const yearElement = document.getElementById('current-year');
-// Mobile menu toggle functionality
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const closeMobileMenuButton = document.getElementById('close-mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
+  if (yearElement) {
+    yearElement.textContent = getCurrentYear();
+  }
 
-function toggleMobileMenu() {
-    mobileMenu.classList.toggle('hidden');
-    document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
-}
+  // --- Mobile Menu Logic ---
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const closeMobileMenuButton = document.getElementById('close-mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-mobileMenuButton.addEventListener('click', toggleMobileMenu);
-closeMobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-// Close mobile menu when clicking outside (optional, but good UX)
-mobileMenu.addEventListener('click', (event) => {
-    if (event.target === mobileMenu) {
-        toggleMobileMenu();
+  // Check if all necessary elements exist before adding listeners
+  if (mobileMenuButton && closeMobileMenuButton && mobileMenu) {
+    
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      // Prevent scrolling when menu is open
+      document.body.classList.toggle('overflow-hidden'); 
     }
-});
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    closeMobileMenuButton.addEventListener('click', toggleMobileMenu);
 
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            // Adjust scroll position to account for fixed header
-            const headerOffset = document.querySelector('header').offsetHeight;
-            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - headerOffset - 20; // 20px extra padding
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        }
+    // Close the mobile menu if the user clicks outside of it
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target === mobileMenu) {
+        toggleMobileMenu();
+      }
     });
+  }
+
+  // --- Smooth Scrolling Logic ---
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        // Account for a fixed header by getting its height
+        const headerOffset = document.querySelector('header')?.offsetHeight || 0;
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        // Add 20px of extra padding for better spacing
+        const offsetPosition = elementPosition - headerOffset - 20; 
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
 });
