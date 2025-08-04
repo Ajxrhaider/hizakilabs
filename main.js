@@ -1,6 +1,18 @@
  // Get current year for footer
+ function getCurrentYear() {
+  const date = new Date();
+  return date.getFullYear();
+}
+// Set the current year in the footer
+document.addEventListener('DOMContentLoaded', () => {
+  const yearElement = document.getElementById('current-year');
 document.getElementById('current-year').textContent = new Date().getFullYear();
-
+function getCurrentYear() {
+  const date = new Date();
+  return date.getFullYear();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const yearElement = document.getElementById('current-year');
 // Mobile menu toggle functionality
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const closeMobileMenuButton = document.getElementById('close-mobile-menu-button');
