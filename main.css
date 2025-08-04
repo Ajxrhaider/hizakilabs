@@ -1,6 +1,8 @@
 body {
 	background-image: url("images/bg.png");
 	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: cover;
 	background-attachment: fixed;
 	background-position: top center;
 	font-family: 'Inter', sans-serif, Verdana, Arial;
@@ -11,13 +13,17 @@ body {
 	-o-background-size: cover;
 	background-size: cover;
 	color: black;
-    line-height: 1.5;
+	line-height: 1.5;
 	-webkit-text-size-adjust: 100%;
 	text-size-adjust: 100%;
 	padding: 0 auto;
+	/* Enable momentum scrolling on iOS */
+	-webkit-overflow-scrolling: touch;
+	overflow-x: hidden;
 }
 .container {
 	max-width: 1200px;
+	
 }
 .section-title {
 	position: relative;
@@ -35,6 +41,63 @@ body {
 	background-color: #6366f1; /* Indigo */
 	border-radius: 9999px;
 }
-body {
-    background-repeat: no-repeat;
+.animated-box {
+  -webkit-transition: all 0.3s ease-in-out; /* Safari and WebKit browsers */
+  transition: all 0.3s ease-in-out;         /* Standard */
+}
+
+.animated-box:hover {
+  -webkit-transform: scale(1.1);            /* Safari and WebKit browsers */
+  transform: scale(1.1);                    /* Standard */
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/*
+ * 4. User Selection Styling
+ * To customize how text is highlighted when a user selects it.
+ */
+::selection {
+  background: #b3d4fc;
+  color: #000;
+}
+::-webkit-selection {
+  background: #b3d4fc; /* Safari and WebKit browsers */
+  color: #000;
+}
+
+/*
+ * 5. Appearance on Form Elements
+ * The -webkit-appearance property can be used to reset an element's
+ * default styling to create a custom look.
+ */
+input[type="text"],
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add your custom styles below */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+input[type="text"]:focus,
+button:focus {
+  outline: none;
+  border-color: #6366f1; /* Indigo */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2); /* Indigo shadow */
 }
