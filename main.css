@@ -1,103 +1,111 @@
+
+
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: #888 #f1f1f1;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
+}
 body {
-	background-image: url("images/bg.png");
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	background-size: cover;
-	background-attachment: fixed;
-	background-position: top center;
-	font-family: 'Inter', sans-serif, Verdana, Arial;
-	background-color: #f8fafc; /* Light gray background */
-	color: #334155; /* Dark slate gray text */
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	color: black;
+	margin: 0;
+	padding: 0;
+	color: #334155;
+	font-family: 'Inter', Verdana, Arial, sans-serif;
 	line-height: 1.5;
-	-webkit-text-size-adjust: 100%;
-	text-size-adjust: 100%;
-	padding: 0 auto;
-	/* Enable momentum scrolling on iOS */
-	-webkit-overflow-scrolling: touch;
+	background: #008c9e url("images/bg.png") no-repeat top center/cover fixed;
 	overflow-x: hidden;
+	text-size-adjust: 100%;
 }
+::selection {
+	background: #b3d4fc;
+	color: #000;
+}
+
+
+
 .container {
-	max-width: 1200px;
-	
+	max-width: 75rem;
+	margin-inline: auto;
+	padding-inline: 1rem;
 }
+
+
+/* Section Title */
 .section-title {
 	position: relative;
 	display: inline-block;
-	padding-bottom: 0.5rem;
 	margin-bottom: 2rem;
+	padding-bottom: 0.5rem;
 }
 .section-title::after {
 	content: '';
 	position: absolute;
-	left: 0;
 	bottom: 0;
+	left: 0;
 	width: 50%;
-	height: 4px;
-	background-color: #6366f1; /* Indigo */
+	height: 0.25rem;
+	background: #6366f1;
 	border-radius: 9999px;
 }
-.animated-box {
-  -webkit-transition: all 0.3s ease-in-out; /* Safari and WebKit browsers */
-  transition: all 0.3s ease-in-out;         /* Standard */
-}
 
-.animated-box:hover {
-  -webkit-transform: scale(1.1);            /* Safari and WebKit browsers */
-  transform: scale(1.1);                    /* Standard */
-}
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/*
- * 4. User Selection Styling
- * To customize how text is highlighted when a user selects it.
- */
-::selection {
-  background: #b3d4fc;
-  color: #000;
-}
-::-webkit-selection {
-  background: #b3d4fc; /* Safari and WebKit browsers */
-  color: #000;
-}
-
-/*
- * 5. Appearance on Form Elements
- * The -webkit-appearance property can be used to reset an element's
- * default styling to create a custom look.
- */
 input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
 button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  /* Add your custom styles below */
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 10px;
+	appearance: none;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	padding: 0.625rem;
+	transition: border-color 0.2s, box-shadow 0.2s;
 }
 input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+textarea:focus,
 button:focus {
-  outline: none;
-  border-color: #6366f1; /* Indigo */
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2); /* Indigo shadow */
+	outline: none;
+	border-color: #6366f1;
+	box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
 }
+input[type="text"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="password"]:focus-visible,
+input[type="search"]:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+	outline: 2px solid #6366f1;
+	outline-offset: 2px;
+}
+
+
+
+.animated-box {
+	transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.animated-box:hover {
+	transform: scale(1.1);
+}
+
+
+
+/* Custom Scrollbar Styles (WebKit & Firefox) */
+::-webkit-scrollbar {
+	width: 12px;
+}
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+

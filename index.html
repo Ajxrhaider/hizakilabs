@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hizaki Labs - Your Tech & Creative Partner
-    <link rel="icon" type="image/x-icon" href="images/icon.svg">
-    <meta charset="UTF-8">
+    <meta name="description" content="Hizaki Labs - Your Tech & Creative Partner">
     <title>Hizaki Labs - Your Tech & Creative Partner</title>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="main.js"></script>
+
+    <!-- Google Fonts: Inter & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/icon.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Main CSS & JS -->
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+
+    <!-- Favicons (SVG preferred, PNG fallback, Apple Touch) -->
+     <link rel="icon" type="image/svg+xml" href="images/icon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Theme color and PWA meta -->
     <meta name="theme-color" content="#ffffff">
+    <meta name="color-scheme" content="light dark">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-    <meta name="msapplication-config" content="/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 </head>
 <body class="antialiased">
@@ -51,21 +57,21 @@
                 <a href="#socials" class="text-gray-600 hover:text-indigo-700 font-medium transition-colors rounded-md px-3 py-2">Socials</a>
             </nav>
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md p-2">
-                <i class="fas fa-bars text-2xl"></i>
+            <button id="mobile-menu-button" aria-label="Open mobile menu" class="md:hidden text-gray-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md p-2">
+                <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
             </button>
         </div>
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-6">
-            <button id="close-mobile-menu-button" class="absolute top-4 right-4 text-gray-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md p-2">
-                <i class="fas fa-times text-3xl"></i>
+            <button id="close-mobile-menu-button" aria-label="Close mobile menu" class="absolute top-4 right-4 text-gray-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md p-2">
+                <i class="fas fa-times text-3xl" aria-hidden="true"></i>
             </button>
-            <a href="#home" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2" onclick="toggleMobileMenu()">Home</a>
-            <a href="#services" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2" onclick="toggleMobileMenu()">Services</a>
-            <a href="#portfolio" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2" onclick="toggleMobileMenu()">Portfolio</a>
-            <a href="#about" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2" onclick="toggleMobileMenu()">About</a>
-            <a href="#contact" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2" onclick="toggleMobileMenu()">Contact</a>
-            <a href="#socials" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2" onclick="toggleMobileMenu()">Socials</a>
+            <a href="#home" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2">Home</a>
+            <a href="#services" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2">Services</a>
+            <a href="#portfolio" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2">Portfolio</a>
+            <a href="#about" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2">About</a>
+            <a href="#contact" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2">Contact</a>
+            <a href="#socials" class="text-gray-800 hover:text-indigo-700 text-2xl font-medium transition-colors py-2">Socials</a>
         </div>
     </header>
 
@@ -98,7 +104,7 @@
                 <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="text-indigo-600 text-5xl mb-6 text-center"><i class="fas fa-laptop-code"></i></div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Tech Solutions</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <ul class="space-y-2 text-gray-600">
                         <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Laptop Repair & Diagnostics</li>
                         <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Operating System Installation & Setup</li>
                         <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Networking Solutions (Setup, Troubleshooting)</li>
@@ -108,7 +114,7 @@
                 <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="text-indigo-600 text-5xl mb-6 text-center"><i class="fas fa-palette"></i></div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Creative Production</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <ul class="space-y-2 text-gray-600">
                         <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Web Design & Development</li>
                         <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Video Editing & Production</li>
                         <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Computer Graphics & Visuals</li>
@@ -119,7 +125,7 @@
                 <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <div class="text-indigo-600 text-5xl mb-6 text-center"><i class="fas fa-rocket"></i></div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Future Ventures</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <ul class="space-y-2 text-gray-600">
                         <li><i class="fas fa-star text-yellow-500 mr-2"></i>Game Development</li>
                         <li><i class="fas fa-star text-yellow-500 mr-2"></i>AI Development & Integration</li>
                         <li><i class="fas fa-star text-yellow-500 mr-2"></i>Custom PC Building</li>
@@ -139,14 +145,14 @@
                     <i class="fab fa-spotify text-green-500 text-6xl mb-4"></i>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Parody Radio</h3>
                     <p class="text-gray-600 mb-4">Tune in for insights, discussions, and entertainment on various topics.</p>
-                    <a href="https://open.spotify.com/show/5kWl29kyLskkNsVgwmkfQ0?si=GBKRD7DASbi2kKWM_qU6Hw" target="_blank" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors font-medium">Listen Now</a>
+                    <a href="https://open.spotify.com/show/5kWl29kyLskkNsVgwmkfQ0?si=GBKRD7DASbi2kKWM_qU6Hw" target="_blank" rel="noopener" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors font-medium">Listen Now</a>
                 </div>
                 <!-- YouTube - Gaming -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
                     <i class="fab fa-youtube text-red-600 text-6xl mb-4"></i>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">John Hizaki: Gaming Channel</h3>
                     <p class="text-gray-600 mb-4">Join me for gaming adventures, reviews, and fun gameplay videos.</p>
-                    <a href="https://www.youtube.com/channel/@Ajxrhaider" target="_blank" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-medium">Watch Now</a>
+                    <a href="https://www.youtube.com/channel/@Ajxrhaider" target="_blank" rel="noopener" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-medium">Watch Now</a>
                 </div>
                 <!-- YouTube - Coding -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
@@ -154,21 +160,21 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">YouTube: Coding / Tech Channel</h3>
                     <p class="text-gray-600 mb-4">Tutorials, coding challenges, and discussions on software development.</p>
                     <p class="text-gray-600 mb-4">Also expect discussions on pc building & repair, and networking tips.</p>
-                    <a href="https://www.youtube.com/channel/@Asura.j" target="_blank" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-medium">Watch Now</a>
+                    <a href="https://www.youtube.com/channel/@Asura.j" target="_blank" rel="noopener" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-medium">Watch Now</a>
                 </div>
                 <!-- YouTube - Anime & Memes -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
                     <i class="fab fa-youtube text-red-600 text-6xl mb-4"></i>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">YouTube: Anime & Memes Channel</h3>
-                    <p class="text-gray-600 mb-4">For all things anime, hilarious memes, and pop culture commentary.</p>
-                    <a href="https://www.youtube.com/channel/YOUR_ANIME_MEMES_CHANNEL_ID" target="_blank" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-colors font-medium">Watch Now</a>
+                    <p class="text-gray-600 mb-4">For all things anime, hilarious memes, and pop culture commentary. (Channel coming soon!)</p>
+                    <a href="#" rel="noopener" class="bg-gray-400 text-white px-6 py-3 rounded-full cursor-not-allowed font-medium">Watch Now</a>
                 </div>
                 <!-- Placeholder for future projects -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
                     <i class="fas fa-cogs text-gray-400 text-6xl mb-4"></i>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">More Projects Coming Soon!</h3>
                     <p class="text-gray-600 mb-4">Stay tuned for exciting new developments in game dev, AI, and PC building.</p>
-                    <a href="#contact" class="bg-gray-400 text-white px-6 py-3 rounded-full cursor-not-allowed font-medium">Learn More</a>
+                    <button type="button" class="bg-gray-400 text-white px-6 py-3 rounded-full cursor-not-allowed font-medium" disabled>Learn More</button>
                 </div>
             </div>
         </div>
@@ -178,7 +184,7 @@
     <section id="about" class="py-16 md:py-24 bg-gray-50">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2 flex justify-center">
-                <img src="images/icon.svg" alt="Your Photo" class="rounded-full shadow-lg border-4 border-indigo-300 w-64 h-64 md:w-80 md:h-80 object-cover">
+                <img src="images/icon.svg" alt="Hizaki Labs circular logo with indigo border" class="rounded-full shadow-lg border-4 border-indigo-300 w-64 h-64 md:w-80 md:h-80 object-cover">
             </div>
             <div class="md:w-1/2 text-center md:text-left">
                 <h2 class="text-4xl font-bold mb-6 section-title md:mx-0 mx-auto">About Hizaki Labs</h2>
@@ -240,11 +246,11 @@
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold mb-12 section-title mx-auto">Connect With Me</h2>
             <div class="flex justify-center space-x-8 text-5xl">
-                <a href="https://twitter.com/asura_java" target="_blank" class="text-blue-500 hover:text-blue-700 transition-colors transform hover:scale-110" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://linkedin.com/in/inimfon-abasi-ekpenyong-b05518240" target="_blank" class="text-blue-700 hover:text-blue-900 transition-colors transform hover:scale-110" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Ajxrhaider" target="_blank" class="text-gray-800 hover:text-gray-900 transition-colors transform hover:scale-110" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://youtube.com/@Asura.j" target="_blank" class="text-red-600 hover:text-red-800 transition-colors transform hover:scale-110" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://open.spotify.com/show/5kWl29kyLskkNsVgwmkfQ0?si=c826f7587da242cd" target="_blank" class="text-green-500 hover:text-green-700 transition-colors transform hover:scale-110" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+                <a href="https://twitter.com/asura_java" target="_blank" rel="noopener" class="text-blue-500 hover:text-blue-700 transition-colors transform hover:scale-110" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/in/inimfon-abasi-ekpenyong-b05518240" target="_blank" rel="noopener" class="text-blue-700 hover:text-blue-900 transition-colors transform hover:scale-110" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Ajxrhaider" target="_blank" rel="noopener" class="text-gray-800 hover:text-gray-900 transition-colors transform hover:scale-110" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://youtube.com/@Asura.j" target="_blank" rel="noopener" class="text-red-600 hover:text-red-800 transition-colors transform hover:scale-110" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/show/5kWl29kyLskkNsVgwmkfQ0?si=c826f7587da242cd" target="_blank" rel="noopener" class="text-green-500 hover:text-green-700 transition-colors transform hover:scale-110" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
             </div>
         </div>
     </section>
@@ -271,5 +277,7 @@
             </div>
         </div>
     </footer>
+    <!-- Main JS moved to end for performance -->
+    <script src="main.js"></script>
 </body>
 </html>
