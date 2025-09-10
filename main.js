@@ -89,3 +89,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+const apiEndpoint = 'http://localhost:3000/submit-form';
+// Get references to the form, button, and message display element
+const form = document.getElementById('contact-form');
+const submitButton = document.getElementById('submit-button');
+const formMessage = document.getElementById('form-message');
+
+// Add a submit event listener to the form
+form.addEventListener('submit', async function(e) {
+    // 1. Prevent the default form submission (page reload)
+    e.preventDefault();
+
+    // 2. Display a loading message and disable the button
+    submitButton.textContent = 'Submitting...';
+    submitButton.disabled = true;
+    formMessage.textContent = ''; // Clear previous messages
+    formMessage.className = 'text-center mt-4'; // Reset classes
+
+    // 3. Collect the form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // 4. Define your backend API endpoint URL
+    // THIS IS A PLACEHOLDER. You MUST replace this with your own server URL.
+    // This could be a PHP script, a Node.js API, or a serverless function.
+    const apiEndpoint = 'https://your-backend-api.com/submit-form';
+
+    try {
+        // 5. Send the form data to the backend using the Fetch API
+        const response = await fetch(apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data), // Convert data to a JSON string
+        });
+
+        // 6. Check if the server responded with a success status code
+        if (response.ok) {
+            // Success: show a success message and clear the form
+            formMessage.textContent = 'Thank you! Your message has been sent.';
+            formMessage.classList.add('text-green-600', 'font-semibold');
+            form.reset(); // Clear all form fields
+        } else {
+            // Failure: handle server-side errors
+            const errorData = await response.json();
+            formMessage.textContent = `Error: ${errorData.message || 'Something went wrong.'}`;
+            formMessage.classList.add('text-red-600', 'font-semibold');
+        }
+    } catch (error) {
+        // 7. Handle network errors or other exceptions
+        console.error('Submission error:', error);
+        formMessage.textContent = 'A network error occurred. Please try again later.';
+        formMessage.classList.add('text-red-600', 'font-semibold');
+    } finally {
+        // 8. Re-enable the submit button regardless of success or failure
+        submitButton.textContent = 'Send Message';
+        submitButton.disabled = false;
+    }
+});
