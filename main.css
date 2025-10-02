@@ -37,6 +37,8 @@ body {
 	display: inline-block;
 	margin-bottom: 2rem;
 	padding-bottom: 0.5rem;
+	font-size: 2rem;
+	font-weight: 700;
 }
 .section-title::after {
 	content: '';
@@ -47,6 +49,9 @@ body {
 	height: 0.25rem;
 	background: #6366f1;
 	border-radius: 9999px;
+	transform: translateX(25%);
+	transform: translateX(50%);
+	bottom: -10px;
 }
 
 /* Alternate Section Title (centered underline) */
