@@ -1,4 +1,3 @@
-
 // Utility: Get current year
 const getCurrentYear = () => new Date().getFullYear();
 
@@ -148,3 +147,49 @@ form.addEventListener('submit', async function(e) {
         submitButton.disabled = false;
     }
 });
+
+// Alpine.js Core & Plugins (for interactivity)
+const alpineScripts = [
+  "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/mask@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/trap@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/window@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/scroll@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/tooltip@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/notifications@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/clipboard@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/scrollspy@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/dragula@3.x.x/dist/cdn.min.js",
+  "https://unpkg.com/@alpinejs/codemirror@3.x.x/dist/cdn.min.js"
+];
+
+alpineScripts.forEach(src => {
+  const script = document.createElement('script');
+  script.src = src;
+  script.defer = true;
+  document.head.appendChild(script);
+});
+
+// Tailwind CSS CDN & Config
+const tailwindScript = document.createElement('script');
+tailwindScript.src = "https://cdn.tailwindcss.com";
+document.head.appendChild(tailwindScript);
+
+tailwindScript.onload = () => {
+  if (window.tailwind) {
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'space-grotesk': ['Space Grotesk', 'sans-serif']
+          }
+        }
+      }
+    };
+  }
+};

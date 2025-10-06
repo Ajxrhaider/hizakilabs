@@ -1,4 +1,4 @@
-html {
+ html {
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	scrollbar-width: thin;
@@ -34,24 +34,13 @@ body {
 /* Section Title */
 .section-title {
 	position: relative;
-	display: inline-block;
-	margin-bottom: 2rem;
-	padding-bottom: 0.5rem;
-	font-size: 2rem;
-	font-weight: 700;
 }
 .section-title::after {
 	content: '';
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 50%;
-	height: 0.25rem;
-	background: #6366f1;
-	border-radius: 9999px;
-	transform: translateX(25%);
-	transform: translateX(50%);
-	bottom: -10px;
+	background-color: #6366F1; /* Indigo-500 */
+	left: 50%;
+	border-radius: 2px;
 }
 
 /* Alternate Section Title (centered underline) */
