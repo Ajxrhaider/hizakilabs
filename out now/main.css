@@ -1,0 +1,136 @@
+ html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: #888 #f1f1f1;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+body {
+	margin: 0;
+	padding: 0;
+	color: #334155;
+	font-family: 'Inter', Verdana, Arial, sans-serif;
+	line-height: 1.5;
+	background: #008c9e url("images/bg.png") no-repeat top center/cover fixed;
+	overflow-x: hidden;
+	text-size-adjust: 100%;
+}
+::selection {
+	background: #b3d4fc;
+	color: #000;
+}
+
+
+
+.container {
+	max-width: 75rem;
+	margin-inline: auto;
+	padding-inline: 1rem;
+}
+
+
+/* Section Title */
+.section-title {
+	position: relative;
+}
+.section-title::after {
+	content: '';
+	position: absolute;
+	background-color: #6366F1; /* Indigo-500 */
+	left: 50%;
+	border-radius: 2px;
+}
+
+/* Alternate Section Title (centered underline) */
+.section-title.centered::after {
+    position: static;
+    display: block;
+    width: 50%;
+    height: 4px;
+    background-color: #6366f1;
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
+button {
+	appearance: none;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	padding: 0.625rem;
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+	border-color: #6366f1;
+	box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+}
+input[type="text"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="password"]:focus-visible,
+input[type="search"]:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+	outline: 2px solid #6366f1;
+	outline-offset: 2px;
+}
+
+/* Animated Box */
+.animated-box {
+	transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.animated-box:hover {
+	transform: scale(1.1);
+}
+
+/* Custom Scrollbar Styles (WebKit & Firefox) */
+:root {
+	--primary-color: #6366f1;
+	--secondary-color: #f1f5f9;
+	--dark-bg: #0f172a;
+	--light-bg: #1e293b;
+}
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: var(--dark-bg);
+}
+::-webkit-scrollbar-thumb {
+	background: #475569;
+	border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #64748b;
+}
+
+/* Animation for fade-in effect */
+@keyframes fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.animate-fade-in-up {
+	animation: fade-in-up 0.8s ease-out forwards;
+}
+.animate-fade-in {
+	animation: fade-in-up 0.8s ease-out 0.2s forwards;
+	opacity: 0;
+}
