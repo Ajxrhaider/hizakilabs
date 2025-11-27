@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Hizaki Testing</title>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.22/browser.min.js"></script>
+    <script type="text/babel" src="app.jsx"></script>
+    <script type="text/javascript" src="index.js"></script>
+
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+        var Letter = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        {this.props.children}
+                    </div>
+                );
+            }
+        });
+        var destination = document.querySelector("#container");
+        ReactDOM.render(
+            <div>
+                <Letter>A</Letter>
+                <Letter>E</Letter>
+                <Letter>I</Letter>
+                <Letter>O</Letter>
+                <Letter>U</Letter>
+            </div>,
+            destination
+        );
+    </script> 
+</body>
+
+</html>
