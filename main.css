@@ -15,6 +15,7 @@ body {
 	line-height: 1.5;
 	background: #008c9e url("images/bg.png") no-repeat top center/cover fixed;
 	overflow-x: hidden;
+	-webkit-text-size-adjust: 100%;
 	text-size-adjust: 100%;
 }
 ::selection {

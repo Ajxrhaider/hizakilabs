@@ -39,6 +39,7 @@
     <!-- ================= React ================= -->
     <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- React (use the modern 18.x UMD build) -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
@@ -96,7 +97,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="main.css">
 </head>
-<body class="antialiased font-inter bg-white text-gray-800 scroll-smooth">
+<body class="antialiased font-inter text-gray-800 scroll-smooth">
 
     <!-- ================= HEADER ================= -->
     <header class="bg-white shadow-sm py-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-80">
@@ -112,14 +113,14 @@
                 <a href="#socials" class="text-gray-600 hover:text-indigo-700 font-medium transition-colors rounded-md px-3 py-2">Socials</a>
             </nav>
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" aria-label="Open mobile menu" class="md:hidden text-gray-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md p-2">
+            <button id="mobile-menu-button" aria-label="Open mobile menu" aria-expanded="false" class="md:hidden text-gray-600 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md p-2">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
     </header>
     <!-- ================= AD MODAL ================= -->
-    <div id="ad-modal-overlay" class="hidden fixed inset-0 z-[100] bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" role="dialog" aria-modal="true" aria-labelledby="ad-title">
-        <div id="ad-modal-content" class="bg-white rounded-xl shadow-2xl max-w-lg w-full transform transition-transform duration-300 translate-y-4">
+    <div id="ad-modal-overlay" aria-hidden="true" class="hidden fixed inset-0 z-[100] bg-gray-900 bg-opacity-75 p-4 transition-opacity duration-300 opacity-0" role="dialog" aria-modal="true" aria-labelledby="ad-title">
+        <div id="ad-modal-content" class="bg-white rounded-xl shadow-2xl w-full max-w-md sm:max-w-lg min-w-[280px] max-h-[85vh] overflow-auto transform transition-transform duration-300 translate-y-4">
             
             <div class="relative p-6 md:p-8">
                 <button 
@@ -153,13 +154,13 @@
             
             <div class="bg-gray-50 text-center p-3 rounded-b-xl">
                 <p class="text-xs text-gray-500">
-                    Advertisement will not show again for 24 hours.
+                    Advertisement will appear on every page load.
                 </p>
             </div>
         </div>
     </div>
     <!-- ================= MOBILE MENU ================= -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white bg-opacity-95 z-40 hidden md:hidden transition-transform duration-300 transform -translate-y-full">
+    <div id="mobile-menu" aria-hidden="true" class="fixed inset-0 bg-white bg-opacity-95 z-40 hidden md:hidden transition-transform duration-300 transform -translate-y-full">
         <div class="flex justify-end p-6">
             <button id="close-mobile-menu-button" aria-label="Close mobile menu" class="text-gray-800 text-3xl hover:text-indigo-700">&times;</button>
         </div>
@@ -229,10 +230,10 @@
                             <li><i class="fas fa-star text-yellow-500 mr-2"></i>Game Development</li>
                             <li><i class="fas fa-star text-yellow-500 mr-2"></i>AI Development & Integration</li>
                             <li><i class="fas fa-star text-yellow-500 mr-2"></i>Custom PC Building</li>
-                            <div class="mt-6 text-center">
-                                    <a href="wait.html" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition-colors font-medium">Learn More</a>
-                            </div>
                         </ul>
+                        <div class="mt-6 text-center">
+                            <a href="wait.html" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition-colors font-medium">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>       
@@ -326,7 +327,7 @@
                     <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col text-center">
                         <i class="fas fa-code-branch text-indigo-600 text-5xl mb-4"></i> 
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Trauma Engine</h3>
-                        <p class="text-gray-600 mb-4 flex-grow">A hopeful Game Engine</p>
+                        <p class="text-gray-600 mb-4 flex-grow">A hopeful open source Game Engine</p>
                         <a 
                             href="https://github.com/Ajxrhaider/trauma-engine" target="_blank" 
                             rel="noopener" 
@@ -428,7 +429,7 @@
         </section>
 
         <!-- ===== MODAL FOR PROJECT PREVIEW ===== -->
-        <div id="preview-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div id="preview-modal" aria-hidden="true" class="fixed inset-0 bg-gray-900 bg-opacity-75 p-4 z-50 hidden">
             <div class="bg-white rounded-lg shadow-xl w-full max-w-6xl h-full max-h-[90vh] flex flex-col">
                 <div class="flex justify-between items-center p-4 border-b">
                     <h3 id="modal-title" class="text-xl font-semibold text-gray-800">Live Preview</h3>
