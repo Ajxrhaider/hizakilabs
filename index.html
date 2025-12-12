@@ -117,7 +117,46 @@
             </button>
         </div>
     </header>
+    <!-- ================= AD MODAL ================= -->
+    <div id="ad-modal-overlay" class="hidden fixed inset-0 z-[100] bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" role="dialog" aria-modal="true" aria-labelledby="ad-title">
+        <div id="ad-modal-content" class="bg-white rounded-xl shadow-2xl max-w-lg w-full transform transition-transform duration-300 translate-y-4">
+            
+            <div class="relative p-6 md:p-8">
+                <button 
+                    id="close-ad-modal" 
+                    aria-label="Close advertisement"
+                    class="absolute top-3 right-3 text-gray-500 hover:text-gray-900 transition-colors bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+                    <i class="fas fa-times text-lg"></i>
+                </button>
 
+                <div class="text-center">
+                    <div class="text-indigo-600 text-6xl mb-4">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+
+                    <h2 id="ad-title" class="text-3xl font-bold text-gray-800 font-space-grotesk mb-2">
+                        UNdervolt - Overclock
+                    </h2>
+
+                    <p class="text-lg font-semibold text-green-600 mb-6">
+                        <i class="fas fa-check-circle mr-2"></i> OUT NOW & Available on all platforms!
+                    </p>
+
+                    <a href="https://www.hizakilabs.com/outnow" target="_blank" rel="noopener" class="inline-block w-full bg-indigo-600 text-white font-semibold py-3 rounded-full shadow-lg hover:bg-indigo-700 transition-colors transform hover:scale-[1.02] duration-300">
+                        Stream Now <i class="fas fa-headphones-alt ml-2"></i>
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="bg-gray-50 text-center p-3 rounded-b-xl">
+                <p class="text-xs text-gray-500">
+                    Advertisement will not show again for 24 hours.
+                </p>
+            </div>
+        </div>
+    </div>
     <!-- ================= MOBILE MENU ================= -->
     <div id="mobile-menu" class="fixed inset-0 bg-white bg-opacity-95 z-40 hidden md:hidden transition-transform duration-300 transform -translate-y-full">
         <div class="flex justify-end p-6">
@@ -282,6 +321,19 @@
                             aria-label="View CBT Autotest Repository"
                         >
                             View Repository </a>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col text-center">
+                        <i class="fas fa-code-branch text-indigo-600 text-5xl mb-4"></i> 
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Trauma Engine</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">A hopeful Game Engine</p>
+                        <a 
+                            href="https://github.com/Ajxrhaider/trauma-engine" target="_blank" 
+                            rel="noopener" 
+                            class="mt-auto bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition-colors font-medium"
+                            aria-label="View Trauma Engine Repository"
+                        >
+                            View Repository 
+                        </a>
                     </div>
                     <!-- Placeholder Project -->
                     <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center justify-center text-center">

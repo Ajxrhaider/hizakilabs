@@ -88,7 +88,65 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-// (Duplicate form submission handler intentionally removed; there is one inside DOMContentLoaded)
+const apiEndpoint = 'http://localhost:3000/submit-form';
+// Get references to the form, button, and message display element
+const form = document.getElementById('contact-form');
+const submitButton = document.getElementById('submit-button');
+const formMessage = document.getElementById('form-message');
+
+// Add a submit event listener to the form
+form.addEventListener('submit', async function(e) {
+    // 1. Prevent the default form submission (page reload)
+    e.preventDefault();
+
+    // 2. Display a loading message and disable the button
+    submitButton.textContent = 'Submitting...';
+    submitButton.disabled = true;
+    formMessage.textContent = ''; // Clear previous messages
+    formMessage.className = 'text-center mt-4'; // Reset classes
+
+    // 3. Collect the form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // 4. Define your backend API endpoint URL
+    // THIS IS A PLACEHOLDER. You MUST replace this with your own server URL.
+    // This could be a PHP script, a Node.js API, or a serverless function.
+    const apiEndpoint = 'https://your-backend-api.com/submit-form';
+
+    try {
+        // 5. Send the form data to the backend using the Fetch API
+        const response = await fetch(apiEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data), // Convert data to a JSON string
+        });
+
+        // 6. Check if the server responded with a success status code
+        if (response.ok) {
+            // Success: show a success message and clear the form
+            formMessage.textContent = 'Thank you! Your message has been sent.';
+            formMessage.classList.add('text-green-600', 'font-semibold');
+            form.reset(); // Clear all form fields
+        } else {
+            // Failure: handle server-side errors
+            const errorData = await response.json();
+            formMessage.textContent = `Error: ${errorData.message || 'Something went wrong.'}`;
+            formMessage.classList.add('text-red-600', 'font-semibold');
+        }
+    } catch (error) {
+        // 7. Handle network errors or other exceptions
+        console.error('Submission error:', error);
+        formMessage.textContent = 'A network error occurred. Please try again later.';
+        formMessage.classList.add('text-red-600', 'font-semibold');
+    } finally {
+        // 8. Re-enable the submit button regardless of success or failure
+        submitButton.textContent = 'Send Message';
+        submitButton.disabled = false;
+    }
+});
 
 // Alpine.js Core & Plugins (for interactivity)
 const alpineScripts = [
@@ -135,91 +193,3 @@ tailwindScript.onload = () => {
     };
   }
 };
-// ================= AD POP-UP LOGIC =================
-document.addEventListener('DOMContentLoaded', () => {
-  const adModalOverlay = document.getElementById('ad-modal-overlay');
-  const adModalContent = document.getElementById('ad-modal-content');
-  const closeAdModalButton = document.getElementById('close-ad-modal');
-  const modalDisplayKey = 'adModalClosedTime';
-  const hideForMs = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-
-  /**
-   * Checks if the ad should be shown based on localStorage.
-   * @returns {boolean} True if the ad should be shown.
-   */
-  const shouldShowAd = () => {
-    const lastClosedTime = localStorage.getItem(modalDisplayKey);
-    if (!lastClosedTime) return true; // Never closed before
-
-    const currentTime = new Date().getTime();
-    return (currentTime - Number(lastClosedTime)) > hideForMs;
-  };
-
-  /**
-   * Shows the ad modal with transition effects.
-   */
-  const showAdModal = () => {
-    if (!adModalOverlay) return;
-    // 1. Make the overlay visible (hidden -> block)
-    adModalOverlay.classList.remove('hidden');
-
-    // Wait a brief moment for the browser to register the display change
-    setTimeout(() => {
-      // 2. Animate the backdrop opacity (opacity-0 -> opacity-100)
-      adModalOverlay.classList.add('opacity-100');
-      adModalOverlay.classList.remove('opacity-0');
-
-      // 3. Animate the modal content position (translate-y-4 -> translate-y-0)
-      if (adModalContent) {
-        adModalContent.classList.remove('translate-y-4');
-        adModalContent.classList.add('translate-y-0');
-      }
-    }, 10); // Small delay
-  };
-
-  /**
-   * Hides the ad modal and sets the localStorage key.
-   */
-  const hideAdModal = () => {
-    if (!adModalOverlay) return;
-
-    // Set the time the user closed the modal
-    localStorage.setItem(modalDisplayKey, new Date().getTime());
-
-    // 1. Animate the modal content position
-    if (adModalContent) {
-      adModalContent.classList.remove('translate-y-0');
-      adModalContent.classList.add('translate-y-4');
-    }
-
-    // 2. Animate the backdrop opacity
-    adModalOverlay.classList.add('opacity-0');
-    adModalOverlay.classList.remove('opacity-100');
-
-    // 3. Hide the overlay after the transition completes (300ms)
-    setTimeout(() => {
-      adModalOverlay.classList.add('hidden');
-    }, 300);
-  };
-
-  // --- Ad Modal Logic ---
-  if (closeAdModalButton) {
-    closeAdModalButton.addEventListener('click', hideAdModal);
-  }
-  // Close modal when clicking the overlay (outside the content)
-  if (adModalOverlay) {
-    adModalOverlay.addEventListener('click', (e) => {
-      if (e.target === adModalOverlay) hideAdModal();
-    });
-  }
-  // Close modal on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && adModalOverlay && !adModalOverlay.classList.contains('hidden')) {
-      hideAdModal();
-    }
-  });
-    
-  // Show the modal after a 2 second delay on every page load
-  setTimeout(showAdModal, 2000); // Wait 2 seconds before showing
-});
-// ================= END AD POP-UP LOGIC =================
