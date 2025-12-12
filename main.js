@@ -128,6 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
     adModalOverlay.classList.remove('hidden');
     adModalOverlay.classList.add('flex');
     adModalOverlay.classList.add('items-center', 'justify-center');
+    // Ensure overlay is full-screen and fixed even if Tailwind isn't loaded
+    adModalOverlay.style.position = adModalOverlay.style.position || 'fixed';
+    adModalOverlay.style.top = adModalOverlay.style.top || '0';
+    adModalOverlay.style.left = adModalOverlay.style.left || '0';
+    adModalOverlay.style.right = adModalOverlay.style.right || '0';
+    adModalOverlay.style.bottom = adModalOverlay.style.bottom || '0';
+    adModalOverlay.style.zIndex = adModalOverlay.style.zIndex || '100';
+    // Fallback inline styles in case Tailwind classes aren't applied in production
+    adModalOverlay.style.display = 'flex';
+    adModalOverlay.style.alignItems = 'center';
+    adModalOverlay.style.justifyContent = 'center';
     adModalOverlay.setAttribute('aria-hidden', 'false');
     // prevent background scroll while modal is open
     document.body.classList.add('overflow-hidden');
@@ -137,6 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (adModalContent) {
         adModalContent.classList.remove('translate-y-4');
         adModalContent.classList.add('translate-y-0');
+        // Ensure content sizing works even if Tailwind isn't present
+        adModalContent.style.maxWidth = adModalContent.style.maxWidth || '560px';
+        adModalContent.style.minWidth = adModalContent.style.minWidth || '280px';
+        adModalContent.style.margin = adModalContent.style.margin || '0 auto';
+        adModalContent.style.maxHeight = adModalContent.style.maxHeight || '85vh';
+        adModalContent.style.overflowY = adModalContent.style.overflowY || 'auto';
       }
       if (closeAdModalButton) closeAdModalButton.focus();
     }, 10);
@@ -155,9 +172,27 @@ document.addEventListener('DOMContentLoaded', () => {
       adModalOverlay.classList.add('hidden');
       adModalOverlay.classList.remove('flex');
       adModalOverlay.classList.remove('items-center', 'justify-center');
+      // Remove fallback inline styles to restore page to previous state
+      adModalOverlay.style.display = '';
+      adModalOverlay.style.alignItems = '';
+      adModalOverlay.style.justifyContent = '';
       adModalOverlay.setAttribute('aria-hidden', 'true');
       // release page scroll when modal closes
       document.body.classList.remove('overflow-hidden');
+      if (adModalContent) {
+        adModalContent.style.maxWidth = '';
+        adModalContent.style.minWidth = '';
+        adModalContent.style.margin = '';
+        adModalContent.style.maxHeight = '';
+        adModalContent.style.overflowY = '';
+      }
+      // Clear inline overlay positioning styles we set at show time to avoid global side effects
+      adModalOverlay.style.position = '';
+      adModalOverlay.style.top = '';
+      adModalOverlay.style.left = '';
+      adModalOverlay.style.right = '';
+      adModalOverlay.style.bottom = '';
+      adModalOverlay.style.zIndex = '';
     }, 300);
   };
 

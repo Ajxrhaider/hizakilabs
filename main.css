@@ -135,3 +135,22 @@ button:focus-visible {
 	animation: fade-in-up 0.8s ease-out 0.2s forwards;
 	opacity: 0;
 }
+
+/* Fallback modal overlay behaviors if Tailwind isn't loaded */
+#ad-modal-overlay {
+	display: none;
+	align-items: center;
+	justify-content: center;
+}
+#ad-modal-overlay[aria-hidden="false"] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#ad-modal-content {
+	max-width: 560px;
+	min-width: 280px;
+	margin: 0 1rem;
+	max-height: 85vh;
+	overflow-y: auto;
+}
