@@ -1,8 +1,8 @@
- html {
+html {
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	scrollbar-width: thin;
-	scrollbar-color: #888 #f1f1f1;
+	scrollbar-color: #6366f1 #f1f1f1;
 }
 *, *::before, *::after {
 	box-sizing: inherit;
@@ -17,13 +17,12 @@ body {
 	overflow-x: hidden;
 	-webkit-text-size-adjust: 100%;
 	text-size-adjust: 100%;
+	transition: background-color 0.3s ease;
 }
 ::selection {
 	background: #b3d4fc;
 	color: #000;
 }
-
-
 
 .container {
 	max-width: 75rem;
@@ -31,93 +30,268 @@ body {
 	padding-inline: 1rem;
 }
 
+/* ============================================================================
+   FOCUS & KEYBOARD NAVIGATION
+   ============================================================================ */
 
-/* Section Title */
+/* Remove outline for mouse users, keep for keyboard users */
+.keyboard-nav *:focus {
+	outline: 2px solid #6366f1;
+	outline-offset: 2px;
+}
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+	position: static;
+	width: auto;
+	height: auto;
+	padding: auto;
+	margin: auto;
+	overflow: visible;
+	clip: auto;
+	white-space: normal;
+}
+
+/* ============================================================================
+   SECTION TITLE & DECORATIONS
+   ============================================================================ */
+
 .section-title {
 	position: relative;
+	transition: transform 0.3s ease;
 }
+
 .section-title::after {
 	content: '';
 	position: absolute;
-	background-color: #6366F1; /* Indigo-500 */
+	background-color: #6366f1;
 	left: 50%;
+	transform: translateX(-50%);
+	bottom: -8px;
+	width: 50px;
+	height: 4px;
 	border-radius: 2px;
+	transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* Alternate Section Title (centered underline) */
-.section-title.centered::after {
-    position: static;
-    display: block;
-    width: 50%;
-    height: 4px;
-    background-color: #6366f1;
-    margin: 8px auto 0;
-    border-radius: 2px;
+.section-title:hover::after {
+	width: 80px;
 }
 
-/* Form Elements */
+/* ============================================================================
+   FORM ELEMENTS & VALIDATION
+   ============================================================================ */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="search"],
 textarea,
-button {
+select {
 	appearance: none;
-	border: 1px solid #ccc;
+	border: 2px solid #d1d5db;
 	border-radius: 0.5rem;
-	padding: 0.625rem;
-	transition: border-color 0.2s, box-shadow 0.2s;
+	padding: 0.75rem;
+	font-family: inherit;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	background-color: #fff;
 }
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+textarea:hover,
+select:hover {
+	border-color: #9ca3af;
+}
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
 textarea:focus,
-button:focus {
+select:focus {
 	outline: none;
 	border-color: #6366f1;
-	box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+	background-color: #f9fafb;
 }
-input[type="text"]:focus-visible,
-input[type="email"]:focus-visible,
-input[type="password"]:focus-visible,
-input[type="search"]:focus-visible,
-textarea:focus-visible,
-button:focus-visible {
+
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="password"]:disabled,
+input[type="search"]:disabled,
+textarea:disabled,
+select:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background-color: #f3f4f6;
+}
+
+/* Invalid state */
+input[type="text"][aria-invalid="true"],
+input[type="email"][aria-invalid="true"],
+input[type="password"][aria-invalid="true"],
+input[type="search"][aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+	border-color: #ef4444;
+	background-color: #fef2f2;
+}
+
+input[type="text"][aria-invalid="true"]:focus,
+input[type="email"][aria-invalid="true"]:focus,
+input[type="password"][aria-invalid="true"]:focus,
+input[type="search"][aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus {
+	box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Error message styling */
+.field-error {
+	color: #dc2626;
+	font-size: 0.875rem;
+	margin-top: 0.5rem;
+	display: block;
+	animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ============================================================================
+   BUTTONS & INTERACTIVE ELEMENTS
+   ============================================================================ */
+
+button {
+	appearance: none;
+	cursor: pointer;
+	border: none;
+	font-size: inherit;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+}
+
+button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+button[aria-busy="true"] {
+	pointer-events: none;
+}
+
+/* Button ripple effect */
+button::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.5);
+	transform: translate(-50%, -50%);
+	transition: width 0.6s, height 0.6s;
+}
+
+button:active::before {
+	width: 300px;
+	height: 300px;
+}
+
+/* ============================================================================
+   LINKS & NAVIGATION
+   ============================================================================ */
+
+a {
+	transition: color 0.3s ease, text-decoration 0.3s ease;
+	text-decoration: none;
+	color: #6366f1;
+}
+
+a:hover {
+	color: #4f46e5;
+	text-decoration: underline;
+}
+
+a:focus-visible {
 	outline: 2px solid #6366f1;
 	outline-offset: 2px;
+	border-radius: 2px;
 }
 
-/* Animated Box */
+/* ============================================================================
+   ANIMATED BOX & TRANSITIONS
+   ============================================================================ */
+
 .animated-box {
-	transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-.animated-box:hover {
-	transform: scale(1.1);
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Custom Scrollbar Styles (WebKit & Firefox) */
+.animated-box:hover {
+	transform: scale(1.05);
+}
+
+/* ============================================================================
+   CUSTOM SCROLLBAR
+   ============================================================================ */
+
 :root {
 	--primary-color: #6366f1;
 	--secondary-color: #f1f5f9;
 	--dark-bg: #0f172a;
 	--light-bg: #1e293b;
 }
+
 ::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 }
+
 ::-webkit-scrollbar-track {
 	background: var(--dark-bg);
+	border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
 	background: #475569;
 	border-radius: 5px;
+	transition: background 0.3s ease;
 }
+
 ::-webkit-scrollbar-thumb:hover {
 	background: #64748b;
 }
 
-/* Animation for fade-in effect */
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
 @keyframes fade-in-up {
 	from {
 		opacity: 0;
@@ -128,29 +302,155 @@ button:focus-visible {
 		transform: translateY(0);
 	}
 }
+
 .animate-fade-in-up {
 	animation: fade-in-up 0.8s ease-out forwards;
 }
+
 .animate-fade-in {
 	animation: fade-in-up 0.8s ease-out 0.2s forwards;
 	opacity: 0;
 }
 
-/* Fallback modal overlay behaviors if Tailwind isn't loaded */
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.animate-pulse {
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+/* ============================================================================
+   MODAL STYLES
+   ============================================================================ */
+
 #ad-modal-overlay {
 	display: none;
 	align-items: center;
 	justify-content: center;
 }
+
 #ad-modal-overlay[aria-hidden="false"] {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
+
 #ad-modal-content {
 	max-width: 560px;
 	min-width: 280px;
 	margin: 0 1rem;
 	max-height: 85vh;
 	overflow-y: auto;
+	animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================================
+   TEXT DECORATIONS
+   ============================================================================ */
+
+.text-shadow-lg {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+	.container {
+		padding-inline: 1rem;
+	}
+
+	button, a {
+		padding: 12px 16px;
+		min-height: 44px;
+		min-width: 44px;
+	}
+}
+
+/* ============================================================================
+   HIGH CONTRAST MODE (ACCESSIBILITY)
+   ============================================================================ */
+
+@media (prefers-contrast: more) {
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="search"],
+	textarea,
+	select {
+		border-width: 3px;
+	}
+
+	button {
+		font-weight: 700;
+		border: 2px solid currentColor;
+	}
+}
+
+/* ============================================================================
+   REDUCED MOTION (ACCESSIBILITY)
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+/* ============================================================================
+   DARK MODE (ACCESSIBILITY)
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background: #1a1a2e;
+		color: #e0e0e0;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="search"],
+	textarea,
+	select {
+		background-color: #2a2a3e;
+		color: #e0e0e0;
+		border-color: #444;
+	}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="password"]:focus,
+	input[type="search"]:focus,
+	textarea:focus,
+	select:focus {
+		background-color: #3a3a4e;
+		border-color: #6366f1;
+	}
 }

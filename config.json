@@ -1,0 +1,64 @@
+{
+  "site": {
+    "title": "Hizaki Labs",
+    "description": "Where Innovation Meets Expertise",
+    "author": "John Hizaki",
+    "url": "https://www.hizakilabs.com",
+    "logo": "images/icon.svg",
+    "favicon": "images/icon.png",
+    "theme": "#6366f1",
+    "lang": "en"
+  },
+  "navigation": [
+    { "name": "Home", "href": "#home" },
+    { "name": "Services", "href": "#services" },
+    { "name": "Portfolio", "href": "#portfolio" },
+    { "name": "About", "href": "#about" },
+    { "name": "Contact", "href": "#contact" },
+    { "name": "Socials", "href": "#socials" }
+  ],
+  "services": [
+    {
+      "id": "tech-solutions",
+      "title": "Tech Solutions",
+      "icon": "fas fa-laptop-code",
+      "items": [
+        "Laptop Repair & Diagnostics",
+        "Operating System Installation & Setup",
+        "Networking Solutions"
+      ]
+    },
+    {
+      "id": "creative-production",
+      "title": "Creative Production",
+      "icon": "fas fa-palette",
+      "items": [
+        "Web Design & Development",
+        "Video Editing & Production",
+        "Music Production & Sound Design"
+      ]
+    },
+    {
+      "id": "future-ventures",
+      "title": "Future Ventures",
+      "icon": "fas fa-rocket",
+      "items": [
+        "Game Development",
+        "AI Development & Integration",
+        "Custom PC Building"
+      ]
+    }
+  ],
+  "social_links": [
+    { "name": "Spotify Music", "url": "https://open.spotify.com/artist/3k6Cy1fgDhQtNqc8AmayGD", "icon": "fab fa-spotify", "color": "#1DB954" },
+    { "name": "Twitter", "url": "https://twitter.com/asura_java", "icon": "fab fa-twitter", "color": "#1DA1F2" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/in/john-hizaki", "icon": "fab fa-linkedin", "color": "#0A66C2" },
+    { "name": "GitHub", "url": "https://github.com/Ajxrhaider", "icon": "fab fa-github", "color": "#333333" },
+    { "name": "YouTube", "url": "https://youtube.com/@Asura.j", "icon": "fab fa-youtube", "color": "#FF0000" },
+    { "name": "Spotify Podcast", "url": "https://open.spotify.com/show/5kWl29kyLskkNsVgwmkfQ0", "icon": "fas fa-podcast", "color": "#a855f7" }
+  ],
+  "contact": {
+    "email": "contact@hizakilabs.com",
+    "form_endpoint": "https://formspree.io/f/xldlwynl"
+  }
+}

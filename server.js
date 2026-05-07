@@ -1,65 +1,166 @@
-// Import necessary libraries
-const express = require('express');
-const admin = require('firebase-admin');
+/**
+ * Backend Server for Hizaki Labs
+ * Firebase Firestore Integration for form submissions
+ * IMPORTANT: Keep serviceAccountKey.json private - add to .gitignore
+ */
 
-// --- FIREBASE SETUP ---
-// You MUST replace 'path/to/your/serviceAccountKey.json' with the
-// actual path to your downloaded service account key file.
-// IMPORTANT: This file should be kept private and never committed to version control.
-const serviceAccount = require('./serviceAccountKey.json');
+import express from 'express';
+import admin from 'firebase-admin';
+import cors from 'cors';
+import dotenv from 'dotenv';
 
-// Initialize the Firebase Admin SDK
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
+dotenv.config();
 
-// Get a reference to the Firestore database
+// Initialize Express app
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Enable CORS
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}));
+
+app.use(express.json());
+app.use(express.static('public'));
+
+// Firebase initialization
+if (!process.env.FIREBASE_PROJECT_ID) {
+  console.warn('⚠️  WARNING: Firebase credentials not configured. Skipping Firebase init.');
+} else {
+  try {
+    const serviceAccount = {
+      type: process.env.FIREBASE_TYPE,
+      project_id: process.env.FIREBASE_PROJECT_ID,
+      private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+      private_key: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      client_email: process.env.FIREBASE_CLIENT_EMAIL,
+      client_id: process.env.FIREBASE_CLIENT_ID,
+      auth_uri: process.env.FIREBASE_AUTH_URI,
+      token_uri: process.env.FIREBASE_TOKEN_URI,
+      auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+      client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL,
+    };
+
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount)
+    });
+
+    console.log('✅ Firebase Admin SDK initialized');
+  } catch (error) {
+    console.error('❌ Firebase initialization failed:', error);
+  }
+}
+
 const db = admin.firestore();
 
-// Create an Express application
-const app = express();
-const port = 3000;
-
-// Use built-in middleware to parse incoming JSON requests
-app.use(express.json());
-
-// Set up a simple CORS (Cross-Origin Resource Sharing) policy
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'POST');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// This is the API endpoint that will handle your form submissions.
-app.post('/submit-form', async (req, res) => {
-    try {
-        const formData = req.body;
+// Form submission endpoint
+app.post('/api/submit-form', async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
 
-        // Log the received data to the server console
-        console.log('Received form data:');
-        console.log(formData);
-
-        // Save the form data to a Firestore collection
-        // The collection name is 'formSubmissions'. You can change this.
-        const collectionRef = db.collection('formSubmissions');
-        
-        // Add a new document to the collection with the form data
-        const docRef = await collectionRef.add(formData);
-
-        // Send a success response back to the client with the new document ID
-        console.log(`Document written with ID: ${docRef.id}`);
-        res.status(200).json({ message: 'Form submitted successfully!', docId: docRef.id });
-
-    } catch (error) {
-        // Handle any errors that occur during processing or Firestore operations
-        console.error('Error processing form submission:', error);
-        res.status(500).json({ message: 'Internal Server Error' });
+    // Validation
+    if (!name || !email || !subject || !message) {
+      return res.status(400).json({
+        success: false,
+        message: 'Missing required fields'
+      });
     }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid email format'
+      });
+    }
+
+    // Save to Firestore
+    const docRef = await db.collection('form_submissions').add({
+      name: name.trim(),
+      email: email.toLowerCase().trim(),
+      subject: subject.trim(),
+      message: message.trim(),
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      ip: req.ip,
+      userAgent: req.get('user-agent')
+    });
+
+    console.log(`✅ Form submitted successfully (ID: ${docRef.id})`);
+
+    res.status(200).json({
+      success: true,
+      message: 'Thank you! Your message has been received.',
+      submissionId: docRef.id
+    });
+
+  } catch (error) {
+    console.error('❌ Form submission error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred. Please try again later.'
+    });
+  }
 });
 
-// Start the server and make it listen for incoming requests
+// Contact email endpoint
+app.post('/api/send-email', async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+
+    // Validation
+    if (!name || !email || !subject || !message) {
+      return res.status(400).json({
+        success: false,
+        message: 'Missing required fields'
+      });
+    }
+
+    // TODO: Integrate email service (SendGrid, Nodemailer, etc.)
+    // For now, just log it
+    console.log(`📧 Email from ${email}: ${subject}`);
+
+    res.status(200).json({
+      success: true,
+      message: 'Email sent successfully'
+    });
+
+  } catch (error) {
+    console.error('❌ Email sending error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to send email'
+    });
+  }
+});
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Not found',
+    path: req.path
+  });
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+  console.error('🔥 Server error:', err);
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error'
+  });
+});
+
+// Start server
 app.listen(port, () => {
-    console.log(`Backend API listening at http://localhost:${port}`);
-    console.log('Waiting for form submissions...');
+  console.log(`🚀 Hizaki Labs Backend running on http://localhost:${port}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });

@@ -15,7 +15,13 @@
 
     <!-- Title -->
     <title>Hizaki Labs - Your Tech & Creative Partner</title>
-
+    
+    <!-- Preconnect & Prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    
     <!-- Alpine.js Core & Plugins (for interactivity) -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
@@ -34,7 +40,7 @@
     <script src="https://unpkg.com/@alpinejs/codemirror@3.x.x/dist/cdn.min.js" defer></script>
 
     <!-- ================= MAIN JS ================= -->
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 
     <!-- ================= React ================= -->
     <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
@@ -78,6 +84,40 @@
             border-radius: 2px;
         }
     </style>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'space-grotesk': ['Space Grotesk', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        'primary-dark': '#4f46e5',
+                        secondary: '#e5e7eb',
+                        accent: '#10b981'
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in': 'slideIn 0.4s ease-out'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <!-- Google Fonts: Inter & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,18 +127,22 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- Favicons & Manifest -->
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="images/icon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="images/icon.svg" color="#5bbad5">
+    <link rel="mask-icon" href="images/icon.svg" color="#6366f1">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased font-inter text-gray-800 scroll-smooth">
 
+    <a href="#main" class="sr-only focus:not-sr-only fixed top-0 left-0 z-50 bg-primary text-white px-4 py-2 rounded-br-lg focus:not-sr-only">
+    Skip to main content
+    </a>
+    
     <!-- ================= HEADER ================= -->
     <header class="bg-white shadow-sm py-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-80">
         <div class="container mx-auto px-4 flex justify-between items-center">
@@ -175,7 +219,7 @@
     </div>
 
     <!-- ================= MAIN CONTENT ================= -->
-    <main>
+    <main id="main" role="main">
         <!-- ===== HERO SECTION ===== -->
         <section id="home" class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20 md:py-32 text-center rounded-b-lg shadow-lg">
             <div class="container mx-auto px-4">
@@ -197,53 +241,91 @@
         </section>
 
         <!-- ===== SERVICES SECTION ===== -->
-        <section id="services" class="py-16 md:py-24 bg-gray-50">
+        <section id="services" class="py-20 md:py-32 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 section-title mx-auto">Our Services</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 class="text-4xl font-bold text-center mb-16 font-space-grotesk relative pb-6">
+                    Our Services
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary rounded"></span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Tech Solutions -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <div class="text-indigo-600 text-5xl mb-6 text-center"><i class="fas fa-laptop-code"></i></div>
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Tech Solutions</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Laptop Repair & Diagnostics</li>
-                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Operating System Installation & Setup</li>
-                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Networking Solutions (Setup, Troubleshooting)</li>
-                        </ul>
-                    </div>
-                    <!-- Creative Production -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <div class="text-indigo-600 text-5xl mb-6 text-center"><i class="fas fa-palette"></i></div>
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Creative Production</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Web Design & Development</li>
-                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Video Editing & Production</li>
-                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Computer Graphics & Visuals</li>
-                            <li><i class="fas fa-check-circle text-green-500 mr-2"></i>Music Production & Sound Design</li>
-                        </ul>
-                    </div>
-                    <!-- Future Ventures -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2">
-                        <div class="text-indigo-600 text-5xl mb-6 text-center"><i class="fas fa-rocket"></i></div>
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Future Ventures</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>Game Development</li>
-                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>AI Development & Integration</li>
-                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>Custom PC Building</li>
-                        </ul>
-                        <div class="mt-6 text-center">
-                            <a href="wait.html" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition-colors font-medium">Learn More</a>
+                   <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 duration-300">
+                        <div class="text-5xl text-primary mb-6 text-center">
+                            <i class="fas fa-laptop-code"></i>
                         </div>
-                    </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Tech Solutions</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Laptop Repair & Diagnostics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Operating System Installation & Setup</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Networking Solutions</span>
+                            </li>
+                        </ul>
+                    </article>
+                    <!-- Creative Production -->
+                    <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 duration-300">
+                        <div class="text-5xl text-primary mb-6 text-center">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Creative Production</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Web Design & Development</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Video Editing & Production</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Computer Graphics & Visuals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Music Production & Sound Design</span>
+                            </li>
+                        </ul>
+                    </article>
+                    <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 duration-300">
+                        <div class="text-5xl text-primary mb-6 text-center">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Future Ventures</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Game Development</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>AI Development & Integration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mr-3 mt-1 flex-shrink-0"></i>
+                                <span>Custom PC Building</span>
+                            </li>
+                        </ul>
+                    </article>
                 </div>
-            </div>       
+            </div>
         </section>
 
         <!-- ===== PORTFOLIO SECTION ===== -->
-        <section id="portfolio" class="py-16 md:py-24 bg-white">
+        <section id="portfolio" class="py-20 md:py-32 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 section-title mx-auto"><a href="cook.html">My Content & Portfolio</a></h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 class="text-4xl font-bold text-center mb-16 font-space-grotesk relative pb-6">
+                    <a href="cook.html" class="hover:text-primary transition-colors">My Content & Portfolio</a>
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary rounded"></span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Spotify Podcast -->
                     <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
                         <i class="fab fa-spotify text-purple-500 text-6xl mb-4"></i>
@@ -278,9 +360,12 @@
         </section>
 
                 <!-- ===== PROJECTS SECTION ===== -->
-        <section id="projects" class="py-16 md:py-24 bg-white">
+        <section id="projects" class="py-20 md:py-32 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 section-title mx-auto">Featured Projects</h2>
+                <h2 class="text-4xl font-bold text-center mb-16 font-space-grotesk relative pb-6">
+                    Featured Projects
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary rounded"></span>
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project 1 -->
                     <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col text-center">
@@ -380,7 +465,10 @@
                     <img src="images/icon.png" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e5e7eb/4f46e5?text=HL';" alt="Hizaki Labs circular logo with indigo border" class="rounded-full shadow-lg border-4 border-indigo-300 w-64 h-64 md:w-80 md:h-80 object-cover">
                 </div>
                 <div class="md:w-1/2 text-center md:text-left">
-                    <h2 class="text-4xl font-bold mb-6 section-title md:mx-0 mx-auto">About Hizaki Labs</h2>
+                    <h2 class="text-4xl font-bold text-center mb-16 font-space-grotesk relative pb-6">
+                    About Hizaki Labs
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary rounded"></span>
+                    </h2>
                     <p class="text-lg text-gray-700 leading-relaxed mb-6">
                         Welcome to Hizaki Labs! I'm a dedicated technician and creative professional passionate about technology and its endless possibilities. My journey began with a strong foundation in IT, specializing in laptop repair, operating system installations, and comprehensive networking solutions. I believe in providing reliable and efficient support to keep your systems running smoothly.
                     </p>
@@ -395,38 +483,55 @@
         </section>
 
         <!-- ===== CONTACT SECTION ===== -->
-        <section id="contact" class="py-16 md:py-24 bg-white">
+        <section id="contact" class="py-20 md:py-32 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12 section-title mx-auto">Get in Touch</h2>
+                <h2 class="text-4xl font-bold text-center mb-16 font-space-grotesk relative pb-6">
+                    Get in Touch
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary rounded"></span>
+                </h2>
                 <div class="max-w-3xl mx-auto bg-gray-50 p-8 rounded-xl shadow-lg">
                     <p class="text-lg text-gray-700 text-center mb-8">
                         Have a project in mind or need technical assistance? Feel free to reach out!
                     </p>
                     <!-- Contact Form -->
-                    <form id="contact-form" class="space-y-6" action="https://formspree.io/f/xldlwynl" method="POST">
+                    <form id="contactForm" class="space-y-6" action="https://formspree.io/f/xldlwynl" method="POST" novalidate>
                         <div>
-                            <label for="name" class="block text-gray-700 text-sm font-semibold mb-2">Your Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="Your Name" required>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Name <span class="text-red-500" aria-label="required">*</span>
+                            </label>
+                            <input type="text" id="name" name="name" required aria-required="true" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="Your name" minlength="2" maxlength="100">
+                            <span class="field-error hidden text-red-500 text-sm mt-1" role="alert"></span>
                         </div>
+
                         <div>
-                            <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Your Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="your.email@example.com" required>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Email <span class="text-red-500" aria-label="required">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" required aria-required="true" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="your.email@example.com">
+                            <span class="field-error hidden text-red-500 text-sm mt-1" role="alert"></span>
                         </div>
+
                         <div>
-                            <label for="subject" class="block text-gray-700 text-sm font-semibold mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="Service Inquiry, Collaboration, etc." required>
+                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Subject <span class="text-red-500" aria-label="required">*</span>
+                            </label>
+                            <input type="text" id="subject" name="subject" required aria-required="true" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="What's this about?" minlength="3" maxlength="200">
+                            <span class="field-error hidden text-red-500 text-sm mt-1" role="alert"></span>
                         </div>
+
                         <div>
-                            <label for="message" class="block text-gray-700 text-sm font-semibold mb-2">Your Message</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all resize-y" placeholder="Tell me about your project or inquiry..." required></textarea>
+                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Message <span class="text-red-500" aria-label="required">*</span>
+                            </label>
+                            <textarea id="message" name="message" required aria-required="true" rows="5" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors resize-none" placeholder="Tell us more about your project..." minlength="10" maxlength="5000"></textarea>
+                            <span class="field-error hidden text-red-500 text-sm mt-1" role="alert"></span>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="w-full sm:w-auto bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-700 transition-colors shadow-lg transform hover:scale-105 duration-300">
-                                Send Message
-                            </button>
-                        </div>
+
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors transform hover:-translate-y-1 duration-300 shadow-lg">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
                     </form>
-                    <div id="form-message" class="hidden"></div>
+                    <div id="formMessage" class="hidden mt-6 p-4 rounded-lg text-center font-semibold" role="alert" aria-live="polite"></div>
                     <div class="mt-10 text-center">
                         <p class="text-lg text-gray-700 font-semibold mb-4">Or connect directly:</p>
                         <p class="text-gray-600 mb-2"><i class="fas fa-envelope text-indigo-500 mr-2"></i> Email: <a href="mailto:info@hizakilabs.com" class="text-indigo-600 hover:underline">info@hizakilabs.com</a></p>
@@ -437,16 +542,31 @@
         </section>
 
         <!-- ===== SOCIALS SECTION ===== -->
-        <section id="socials" class="py-16 md:py-24 bg-gray-50">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold mb-12 section-title mx-auto">Connect With Me</h2>
-                <div class="flex justify-center flex-wrap gap-6 text-5xl">
-                    <a href="https://open.spotify.com/artist/3k6Cy1fgDhQtNqc8AmayGD?si=b1Hr_N5xSfq28WBL1MWsOw" target="_blank" rel="noopener" class="text-gray-600 hover:text-green-500 transition-colors transform hover:scale-110" aria-label="Spotify Music"><i class="fab fa-spotify"></i></a>
-                    <a href="https://twitter.com/asura_java" target="_blank" rel="noopener" class="text-gray-600 hover:text-blue-500 transition-colors transform hover:scale-110" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://linkedin.com/in/inimfon-abasi-ekpenyong-b05518240" target="_blank" rel="noopener" class="text-gray-600 hover:text-blue-700 transition-colors transform hover:scale-110" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Ajxrhaider" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900 transition-colors transform hover:scale-110" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://youtube.com/@Asura.j" target="_blank" rel="noopener" class="text-gray-600 hover:text-red-600 transition-colors transform hover:scale-110" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://open.spotify.com/show/5kWl29kyLskkNsVgwmkfQ0?si=c826f7587da242cd" target="_blank" rel="noopener" class="text-gray-600 hover:text-purple-500 transition-colors transform hover:scale-110" aria-label="Spotify Podcast"><i class="fab fa-spotify"></i></a>
+        <section id="socials" class="py-20 md:py-32 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16 font-space-grotesk relative pb-6">
+                    Connect With Me
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary rounded"></span>
+                </h2>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <a href="https://open.spotify.com/artist/3k6Cy1fgDhQtNqc8AmayGD" target="_blank" rel="noopener noreferrer" class="text-5xl text-gray-600 hover:text-green-500 transition-colors transform hover:scale-125 duration-300" aria-label="Spotify Music Profile">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                    <a href="https://twitter.com/asura_java" target="_blank" rel="noopener noreferrer" class="text-5xl text-gray-600 hover:text-blue-500 transition-colors transform hover:scale-125 duration-300" aria-label="Twitter Profile">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/john-hizaki-32ba3b3b2" target="_blank" rel="noopener noreferrer" class="text-5xl text-gray-600 hover:text-blue-700 transition-colors transform hover:scale-125 duration-300" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/Ajxrhaider" target="_blank" rel="noopener noreferrer" class="text-5xl text-gray-600 hover:text-gray-900 transition-colors transform hover:scale-125 duration-300" aria-label="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://youtube.com/@Asura.j" target="_blank" rel="noopener noreferrer" class="text-5xl text-gray-600 hover:text-red-600 transition-colors transform hover:scale-125 duration-300" aria-label="YouTube Channel">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://open.spotify.com/show/5kWl29kyLskkNsVgwmkfQ0?si=c826f7587da242cd" target="_blank" rel="noopener noreferrer" class="text-5xl text-gray-600 hover:text-purple-500 transition-colors transform hover:scale-125 duration-300" aria-label="Spotify Podcast">
+                        <i class="fab fa-spotify"></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -466,20 +586,24 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-gray-800 text-white py-10 rounded-t-lg shadow-inner">
+    <footer class="bg-gray-800 text-white py-12 rounded-t-3xl shadow-lg">
         <div class="container mx-auto px-4 text-center">
             <div class="flex flex-col md:flex-row justify-between items-center mb-6">
                 <div class="mb-4 md:mb-0">
                     <h3 class="text-2xl font-bold text-indigo-300 font-space-grotesk">Hizaki Labs</h3>
                     <p class="text-gray-400 text-sm mt-1">Innovation & Expertise</p>
                 </div>
-                <nav class="flex flex-wrap justify-center space-x-4 md:space-x-6 text-gray-300">
+                <nav class="flex flex-wrap justify-center gap-4 text-gray-300" aria-label="Footer navigation">
                     <a href="#home" class="hover:text-white transition-colors">Home</a>
                     <a href="#services" class="hover:text-white transition-colors">Services</a>
-                    <a href="cook.html" class="hover:text-white transition-colors">Portfolio</a>
+                    <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
                     <a href="#about" class="hover:text-white transition-colors">About</a>
                     <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-                    <a href="#socials" class="hover:text-white transition-colors">Socials</a>
+                </nav>
+                <nav class="flex flex-wrap justify-center md:justify-end gap-4 text-gray-300" aria-label="Legal navigation">
+                    <a href="legal-notice.html" class="hover:text-white transition-colors">Legal</a>
+                    <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition-colors">Terms</a>
                 </nav>
             </div>
             <div class="border-t border-gray-700 pt-6 text-gray-400 text-sm">

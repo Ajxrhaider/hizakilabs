@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Allow specific files
+Allow: /.well-known/
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.hizakilabs.com/sitemap.xml
