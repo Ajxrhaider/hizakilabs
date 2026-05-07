@@ -9,7 +9,7 @@ header('Content-Type: text/html; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
 
 // Include the main index.html file
-include 'index.html';
+readfile('index.html');
 
 // Optional: Add dynamic PHP content here if needed (e.g., server-side analytics or user-specific data)
 // For now, it's a direct include for simplicity and consistency

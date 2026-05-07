@@ -3,10 +3,11 @@
  * Centralized configuration for the application
  */
 
+const API_BASE_URL = window.API_BASE_URL || 'http://localhost:3000/api';
+
 export const CONFIG = {
-  // API Configuration
   API: {
-    BASE_URL: process.env.API_BASE_URL || 'http://localhost:3000/api',
+    BASE_URL: API_BASE_URL,
     TIMEOUT: 10000,
     ENDPOINTS: {
       FORM_SUBMIT: '/submit-form',
@@ -14,17 +15,16 @@ export const CONFIG = {
     }
   },
 
-  // UI Configuration
   UI: {
     SELECTORS: {
-      MOBILE_MENU_BUTTON: '#mobileMenuButton',
-      CLOSE_MOBILE_MENU: '#closeMobileMenu',
-      MOBILE_MENU: '#mobileMenu',
-      AD_MODAL: '#adModal',
-      CLOSE_AD_MODAL: '#closeAdModal',
-      CONTACT_FORM: '#contactForm',
-      FORM_MESSAGE: '#formMessage',
-      CURRENT_YEAR: '#currentYear',
+      MOBILE_MENU_BUTTON: '#mobile-menu-button',
+      CLOSE_MOBILE_MENU: '#close-mobile-menu-button',
+      MOBILE_MENU: '#mobile-menu',
+      AD_MODAL: '#ad-modal-overlay',
+      CLOSE_AD_MODAL: '#close-ad-modal',
+      CONTACT_FORM: '#contact-form',
+      FORM_MESSAGE: '#form-message',
+      CURRENT_YEAR: '#current-year, #currentYear',
       NAV_LINKS: 'a[href^="#"]'
     },
     TIMING: {
@@ -41,7 +41,6 @@ export const CONFIG = {
     }
   },
 
-  // Validation Rules
   VALIDATION: {
     name: {
       minLength: 2,
@@ -65,7 +64,6 @@ export const CONFIG = {
     }
   },
 
-  // Feature Flags
   FEATURES: {
     SHOW_AD_MODAL: true,
     ENABLE_FORM_SUBMISSION: true,
@@ -73,7 +71,6 @@ export const CONFIG = {
     ENABLE_SERVICE_WORKER: true
   },
 
-  // Error Messages
   ERRORS: {
     FORM_SUBMISSION_FAILED: 'Failed to submit form. Please try again later.',
     NETWORK_ERROR: 'Network error. Please check your connection.',
@@ -81,7 +78,6 @@ export const CONFIG = {
     SERVER_ERROR: 'Server error. Please try again later.'
   },
 
-  // Success Messages
   SUCCESS: {
     FORM_SUBMITTED: 'Your message has been sent successfully!',
     EMAIL_SENT: 'Email sent successfully!'

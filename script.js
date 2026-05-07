@@ -2,23 +2,25 @@
 const getCurrentYear = () => new Date().getFullYear();
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Footer Year ---
+  // Footer Year
   const yearElement = document.getElementById('current-year');
   if (yearElement) yearElement.textContent = getCurrentYear();
 
-  // --- Mobile Menu ---
+  // Mobile Menu
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const closeMobileMenuButton = document.getElementById('close-mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
+  const toggleMobileMenu = () => {
+    if (!mobileMenu || !mobileMenuButton) return;
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('-translate-y-full');
+    document.body.classList.toggle('overflow-hidden');
+    mobileMenuButton.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
+    mobileMenu.setAttribute('aria-hidden', mobileMenu.classList.contains('hidden') ? 'true' : 'false');
+  };
+
   if (mobileMenuButton && closeMobileMenuButton && mobileMenu) {
-    const toggleMobileMenu = () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('-translate-y-full');
-      document.body.classList.toggle('overflow-hidden');
-      mobileMenuButton.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
-      mobileMenu.setAttribute('aria-hidden', mobileMenu.classList.contains('hidden') ? 'true' : 'false');
-    };
     mobileMenuButton.addEventListener('click', toggleMobileMenu);
     closeMobileMenuButton.addEventListener('click', toggleMobileMenu);
     mobileMenu.addEventListener('click', (event) => {
@@ -26,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleMobileMenu();
       }
     });
-    // Close mobile menu using Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
         toggleMobileMenu();
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Smooth Scrolling for Anchor Links ---
+  // Smooth Scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -50,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
           top: offsetPosition,
           behavior: 'smooth'
         });
-        // Close mobile menu after clicking a link
         if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
           toggleMobileMenu();
         }
@@ -58,102 +58,100 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Form Submission Handler ---
+  // Form Validation & Submission
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
 
+  const validateField = (field, errorElement) => {
+    let isValid = true;
+    const value = field.value.trim();
+    errorElement.textContent = '';
+    errorElement.classList.add('hidden');
+
+    if (field.hasAttribute('required') && !value) {
+      errorElement.textContent = `${field.name} is required.`;
+      isValid = false;
+    } else if (field.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      errorElement.textContent = 'Please enter a valid email.';
+      isValid = false;
+    } else if (field.minLength && value.length < field.minLength) {
+      errorElement.textContent = `${field.name} must be at least ${field.minLength} characters.`;
+      isValid = false;
+    }
+    if (!isValid) errorElement.classList.remove('hidden');
+    return isValid;
+  };
+
   if (contactForm && formMessage) {
+    ['input', 'textarea'].forEach(type => {
+      contactForm.querySelectorAll(type).forEach(field => {
+        field.addEventListener('blur', () => {
+          const errorElement = document.getElementById(`${field.id}-error`);
+          if (errorElement) validateField(field, errorElement);
+        });
+      });
+    });
+
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      let isFormValid = true;
+      contactForm.querySelectorAll('[required]').forEach(field => {
+        const errorElement = document.getElementById(`${field.id}-error`);
+        if (errorElement && !validateField(field, errorElement)) isFormValid = false;
+      });
+      if (!isFormValid) return;
 
       const submitButton = contactForm.querySelector('button[type="submit"]');
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
       }
 
       try {
-        // Perform a real POST using the form's action, falling back to a simulated delay on failure
-        const actionUrl = contactForm.getAttribute('action');
-        let response = null;
-        if (actionUrl) {
-          const formData = new FormData(contactForm);
-          try {
-            response = await fetch(actionUrl, {
-              method: 'POST',
-              body: formData,
-              headers: {
-                'Accept': 'application/json',
-              }
-            });
-          } catch (err) {
-            // network error - keep response null
-            response = null;
-            console.warn('Form fetch failed, using fallback');
-          }
-        }
-        // If fetch wasn't successful, simulate a short delay to preserve UX
-        if (!response || !response.ok) await new Promise(resolve => setTimeout(resolve, 800));
-
-        if (response && !response.ok) throw new Error('Form submission returned non-OK response');
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Submission failed');
         formMessage.textContent = 'Message sent successfully! Thank you.';
-        formMessage.classList.remove('hidden');
-        formMessage.classList.add('mt-6', 'text-center', 'text-green-600', 'font-medium');
+        formMessage.classList.remove('hidden', 'text-red-600');
+        formMessage.classList.add('text-green-600');
         contactForm.reset();
       } catch (error) {
-        console.error('Form submission error:', error);
-        formMessage.textContent = 'An error occurred. Please try again later.';
-        formMessage.classList.remove('hidden');
-        formMessage.classList.add('mt-6', 'text-center', 'text-red-600', 'font-medium');
+        console.error('Form error:', error);
+        formMessage.textContent = 'An error occurred. Please try again.';
+        formMessage.classList.remove('hidden', 'text-green-600');
+        formMessage.classList.add('text-red-600');
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.textContent = 'Send Message';
+          submitButton.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
         }
-        setTimeout(() => {
-          formMessage.classList.add('hidden');
-        }, 5000);
+        setTimeout(() => formMessage.classList.add('hidden'), 5000);
       }
     });
   }
 
-  // ================= AD POP-UP LOGIC =================
+  // Ad Modal
   const adModalOverlay = document.getElementById('ad-modal-overlay');
   const adModalContent = document.getElementById('ad-modal-content');
   const closeAdModalButton = document.getElementById('close-ad-modal');
-  // Note: We show the ad on every page load (no localStorage suppression)
 
   const showAdModal = () => {
     if (!adModalOverlay || !adModalOverlay.classList.contains('hidden')) return;
-    adModalOverlay.classList.remove('hidden');
-    adModalOverlay.classList.add('flex');
-    adModalOverlay.classList.add('items-center', 'justify-center');
-    // Ensure overlay is full-screen and fixed even if Tailwind isn't loaded
-    adModalOverlay.style.position = adModalOverlay.style.position || 'fixed';
-    adModalOverlay.style.top = adModalOverlay.style.top || '0';
-    adModalOverlay.style.left = adModalOverlay.style.left || '0';
-    adModalOverlay.style.right = adModalOverlay.style.right || '0';
-    adModalOverlay.style.bottom = adModalOverlay.style.bottom || '0';
-    adModalOverlay.style.zIndex = adModalOverlay.style.zIndex || '100';
-    // Fallback inline styles in case Tailwind classes aren't applied in production
-    adModalOverlay.style.display = 'flex';
-    adModalOverlay.style.alignItems = 'center';
-    adModalOverlay.style.justifyContent = 'center';
+    adModalOverlay.classList.remove('hidden', 'opacity-0');
+    adModalOverlay.classList.add('flex', 'items-center', 'justify-center', 'opacity-100');
+    adModalOverlay.style.position = 'fixed';
+    adModalOverlay.style.inset = '0';
+    adModalOverlay.style.zIndex = '100';
     adModalOverlay.setAttribute('aria-hidden', 'false');
-    // prevent background scroll while modal is open
     document.body.classList.add('overflow-hidden');
     setTimeout(() => {
-      adModalOverlay.classList.add('opacity-100');
-      adModalOverlay.classList.remove('opacity-0');
       if (adModalContent) {
         adModalContent.classList.remove('translate-y-4');
         adModalContent.classList.add('translate-y-0');
-        // Ensure content sizing works even if Tailwind isn't present
-        adModalContent.style.maxWidth = adModalContent.style.maxWidth || '560px';
-        adModalContent.style.minWidth = adModalContent.style.minWidth || '280px';
-        adModalContent.style.margin = adModalContent.style.margin || '0 auto';
-        adModalContent.style.maxHeight = adModalContent.style.maxHeight || '85vh';
-        adModalContent.style.overflowY = adModalContent.style.overflowY || 'auto';
       }
       if (closeAdModalButton) closeAdModalButton.focus();
     }, 10);
@@ -161,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const hideAdModal = () => {
     if (!adModalOverlay) return;
-    // NOTE: Do not store dismissal time so the ad will reappear on reload
     if (adModalContent) {
       adModalContent.classList.remove('translate-y-0');
       adModalContent.classList.add('translate-y-4');
@@ -170,71 +167,38 @@ document.addEventListener('DOMContentLoaded', () => {
     adModalOverlay.classList.remove('opacity-100');
     setTimeout(() => {
       adModalOverlay.classList.add('hidden');
-      adModalOverlay.classList.remove('flex');
-      adModalOverlay.classList.remove('items-center', 'justify-center');
-      // Remove fallback inline styles to restore page to previous state
-      adModalOverlay.style.display = '';
-      adModalOverlay.style.alignItems = '';
-      adModalOverlay.style.justifyContent = '';
+      adModalOverlay.classList.remove('flex', 'items-center', 'justify-center');
       adModalOverlay.setAttribute('aria-hidden', 'true');
-      // release page scroll when modal closes
       document.body.classList.remove('overflow-hidden');
-      if (adModalContent) {
-        adModalContent.style.maxWidth = '';
-        adModalContent.style.minWidth = '';
-        adModalContent.style.margin = '';
-        adModalContent.style.maxHeight = '';
-        adModalContent.style.overflowY = '';
-      }
-      // Clear inline overlay positioning styles we set at show time to avoid global side effects
-      adModalOverlay.style.position = '';
-      adModalOverlay.style.top = '';
-      adModalOverlay.style.left = '';
-      adModalOverlay.style.right = '';
-      adModalOverlay.style.bottom = '';
-      adModalOverlay.style.zIndex = '';
+      adModalOverlay.style = '';
     }, 300);
   };
 
-  if (closeAdModalButton) {
-    closeAdModalButton.addEventListener('click', hideAdModal);
-  }
-  // Close modal if user clicks a link inside modal (open in new tab but close modal for better UX)
+  if (closeAdModalButton) closeAdModalButton.addEventListener('click', hideAdModal);
   if (adModalContent) {
     adModalContent.addEventListener('click', (e) => {
-      const anchor = e.target.closest && e.target.closest('a');
-      if (anchor) {
-        hideAdModal();
-      }
+      if (e.target.closest('a')) hideAdModal();
     });
   }
   if (adModalOverlay) {
     adModalOverlay.addEventListener('click', (e) => {
       if (e.target === adModalOverlay) hideAdModal();
     });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !adModalOverlay.classList.contains('hidden')) hideAdModal();
+    });
   }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && adModalOverlay && !adModalOverlay.classList.contains('hidden')) {
-      hideAdModal();
-    }
-  });
-  // Show ad on every page load
   setTimeout(showAdModal, 2000);
-  // ===== Preview Modal Close Logic =====
+
+  // Preview Modal
   const previewModal = document.getElementById('preview-modal');
   const closePreviewButton = document.getElementById('close-modal-button');
   const previewIframe = document.getElementById('preview-iframe');
   if (closePreviewButton && previewModal) {
     closePreviewButton.addEventListener('click', () => {
       previewModal.classList.add('hidden');
-      previewModal.classList.remove('flex');
       previewModal.setAttribute('aria-hidden', 'true');
       if (previewIframe) previewIframe.src = '';
     });
   }
 });
-// (Duplicate form submission handler intentionally removed; there is one inside DOMContentLoaded)
-
-// 3rd-party libraries (Alpine.js, Tailwind) are loaded directly in index.html
-// (Duplicate form submission handler intentionally removed; there is one inside DOMContentLoaded)
-// Note: 3rd-party libraries such as Alpine.js and Tailwind CSS are loaded directly in index.html.
